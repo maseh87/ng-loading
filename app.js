@@ -32,14 +32,16 @@ angular.module('ng-loading', [])
 })
 .factory('compileFactory', function($compile, $rootScope, $document, $timeout) {
   var body = angular.element($document[0].body);
-  var div = '<div class="fade-in loader"></div>';
+  var div = '<loader></loader>';
   div = $compile(div)($rootScope);
   var append = function() {
+    console.log(div);
+    div.addClass('google-loader');
     body.append(div);
   };
   var remove = function() {
     $timeout(function() {
-      div.addClass('fade-out');
+      div.removeClass('google-loader').addClass('fade-out');
     }, 4000);
   };
 
@@ -55,7 +57,7 @@ angular.module('ng-loading', [])
     link: function(scope, element, attrs) {
 
     },
-    template: '<div class="google-loader"></div>'
+    template: '<div></div>'
   };
 });
 
