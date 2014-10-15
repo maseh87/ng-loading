@@ -13,19 +13,27 @@ angular.module('ng-loading', [])
     console.log(result.data, 'results');
   });
 })
-.factory('requestInterceptor', function() {
+.factory('requestInterceptor', function($document) {
+  var body = angular.element($document[0].body);
+  var div = angular.element('<div class="google-loader"></div>');
   return {
     request: function(config) {
-      console.log(config, 'config');
+      body.append(div);
       return config;
     }
   };
 })
 .factory('responseInterceptor', function() {
   return {
-    request: function(response) {
+    response: function(response) {
       console.log(response, 'response');
       return response;
+    }
+  };
+})
+.animation('.google-loader', function() {
+  return {
+    enter: function(elem, callback) {
     }
   };
 });
