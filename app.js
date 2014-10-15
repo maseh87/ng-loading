@@ -13,11 +13,9 @@ angular.module('ng-loading', [])
   });
 })
 .factory('Interceptor', function($document, $injector, $q) {
-  // var compileFactory = $injector.get('compileFactory');
-  // var body = compileFactory.body;
+  var defer = $q.defer();
   return {
     request: function(config) {
-      var defer = $q.defer();
       $injector.invoke(function(compileFactory) {
         compileFactory.append();
         defer.resolve(config);
@@ -25,20 +23,29 @@ angular.module('ng-loading', [])
       return defer.promise;
     },
     response: function(response) {
-      console.log(response, 'response');
+      $injector.invoke(function(compileFactory) {
+        compileFactory.remove();
+      });
       return response;
     }
   };
 })
-.factory('compileFactory', function($compile, $rootScope, $document) {
+.factory('compileFactory', function($compile, $rootScope, $document, $timeout) {
   var body = angular.element($document[0].body);
   var div = '<div loader></div>';
   div = $compile(div)($rootScope);
   var append = function() {
     body.append(div);
   };
+  var remove = function() {
+    $timeout(function() {
+      body.remove(div);
+    }, 4000);
+  };
+
   return {
-    append: append
+    append: append,
+    remove: remove
   };
 })
 .directive('loader', function() {
