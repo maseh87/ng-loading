@@ -1,8 +1,7 @@
 angular.module('ng-loading', [])
 
 .config(function($httpProvider) {
-  console.log($httpProvider.interceptors);
-  $httpProvider.interceptors.push('requestInterceptor', 'responseInterceptor');
+  $httpProvider.interceptors.push('Interceptor');
 })
 .controller('LoadingController', function($scope, $http) {
   $scope.test = 'test';
@@ -13,28 +12,43 @@ angular.module('ng-loading', [])
     console.log(result.data, 'results');
   });
 })
-.factory('requestInterceptor', function($document) {
-  var body = angular.element($document[0].body);
-  var div = angular.element('<div class="google-loader"></div>');
+.factory('Interceptor', function($document, $injector, $q) {
+  // var compileFactory = $injector.get('compileFactory');
+  // var body = compileFactory.body;
   return {
     request: function(config) {
-      body.append(div);
-      return config;
-    }
-  };
-})
-.factory('responseInterceptor', function() {
-  return {
+      var defer = $q.defer();
+      $injector.invoke(function(compileFactory) {
+        compileFactory.append();
+        defer.resolve(config);
+      });
+      return defer.promise;
+    },
     response: function(response) {
       console.log(response, 'response');
       return response;
     }
   };
 })
-.animation('.google-loader', function() {
+.factory('compileFactory', function($compile, $rootScope, $document) {
+  var body = angular.element($document[0].body);
+  var div = '<div loader></div>';
+  div = $compile(div)($rootScope);
+  var append = function() {
+    body.append(div);
+  };
   return {
-    enter: function(elem, callback) {
-    }
+    append: append
+  };
+})
+.directive('loader', function() {
+  return {
+    restrict: 'EAC',
+    scope: {},
+    link: function(scope, element, attrs) {
+
+    },
+    template: '<div class="google-loader"></div>'
   };
 });
 
