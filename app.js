@@ -32,14 +32,14 @@ angular.module('ng-loading', [])
 })
 .factory('compileFactory', function($compile, $rootScope, $document, $timeout) {
   var body = angular.element($document[0].body);
-  var div = '<div loader></div>';
+  var div = '<div class="fade-in loader"></div>';
   div = $compile(div)($rootScope);
   var append = function() {
     body.append(div);
   };
   var remove = function() {
     $timeout(function() {
-      body.remove(div);
+      div.addClass('fade-out');
     }, 4000);
   };
 

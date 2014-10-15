@@ -1,3 +1,11 @@
+.fade-in {
+  -webkit-animation: fadein 1.5s;
+}
+
+.fade-out {
+  -webkit-animation: fadeout .5s;
+}
+
 .google-loader {
   position: absolute;
   top: calc(50% - 25px);
@@ -29,6 +37,16 @@
   -webkit-animation-timing-function: linear, linear;
   -webkit-animation-iteration-count: infinite, infinite;
   -webkit-animation-duration: .6s, 2.4s;
+}
+
+@-webkit-keyframes fadein {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from { opacity: 1;}
+  to { opacity: 0;}
 }
 
 @-webkit-keyframes rotate {
