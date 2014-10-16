@@ -1,39 +1,35 @@
 angular.module('ng-loading', [])
 
-.config(function($httpProvider, compileFactoryProvider, $provide, $injector, InterceptorProvider) {
+.config(function($httpProvider, compileFactoryProvider, $provide) {
   $provide.provider('loading', function() {
-    var disable = false;
+    var enable = true;
     return {
-      disable: function(boolean) {
-        disable = boolean;
+      enable: function(value) {
+        enable = value;
       },
       $get: function() {
         return {
-          disable: disable
+          enable: enable
         };
       }
     };
   });
-
   $httpProvider.interceptors.push('Interceptor');
-
 })
 .controller('LoadingController', function($scope, $http, $interval) {
-  $scope.test = 'test';
-  $interval(function(){
+  $scope.test = function() {
     $http({
       method: 'GET',
       url: 'http://www.reddit.com/.json',
-      loading: false
     }).then(function(result) {
     });
-  }, 7000);
+  };
 })
 .factory('Interceptor', function($document, $injector, $q, loading, $log) {
   var defer = $q.defer();
   return {
     request: function(config) {
-      if(loading.disable) {
+      if(!loading.enable) {
         $log.log(loading, 'loading');
         return config;
       }
@@ -59,13 +55,13 @@ angular.module('ng-loading', [])
     if(div.hasClass('fadeout')) {
       div.removeClass('fadeout');
     }
-    body.append(div);
     body.addClass('fadeIn', '2000');
+    body.append(div);
   };
   var remove = function() {
     $timeout(function() {
       div.addClass('fadeout');
-    }, 4000);
+    }, 3000);
   };
 
   return {
@@ -78,13 +74,11 @@ angular.module('ng-loading', [])
     restrict: 'EAC',
     scope: {},
     link: function(scope, element, attrs) {
-
     },
     replace: true,
     template: '<div class="google-loader"></div>'
   };
 });
-
 
 
 

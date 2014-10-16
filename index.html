@@ -3,11 +3,22 @@
 <head>
   <title>ng-Loading</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="import" href="bower_components/paper-elements/paper-elements.html">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
 
 </head>
-<body ng-app="ng-loading" ng-controller="LoadingController">
+<body>
+  <div ng-app="ng-loading">
+    <div class="text" ng-controller="LoadingController">
+      <h1>Click the button to make a $http request</h1>
+      <paper-button raised class="my-button" ng-click="test()">Click Me</paper-button>
+    </div>
+
+  </div>
+
 
 <script src="app.js"></script>
+
 </body>
 </html>

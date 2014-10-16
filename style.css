@@ -1,6 +1,29 @@
+.my-button {
+  background: purple;
+  color: white;
+  border-radius: 2px;
+}
+
+.text {
+  text-align: center;
+  border: 1px solid black;
+  padding-bottom: 20px;
+}
+
+.second {
+  text-align: center;
+  border: 1px solid black;
+  padding-bottom: 20px;
+}
+.test {
+  text-align: center;
+  padding-top: 20px;
+}
+
 .fadeIn {
   opacity: 1;
 }
+
 .fadeout {
   opacity: 0;
 }
@@ -15,6 +38,7 @@
   border-radius: 25px;
   -webkit-animation: rotate 2.4s linear infinite;
 }
+
 .google-loader:before, .google-loader:after {
   position: absolute;
   width: 50px;
@@ -156,3 +180,12 @@
     border-bottom: 1px solid rgb(58,123,247);
   }
 }
+
+
+
+
+
+
+
+
+
