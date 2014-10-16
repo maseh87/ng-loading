@@ -1,21 +1,42 @@
 angular.module('ng-loading', [])
 
-.config(function($httpProvider) {
-  $httpProvider.interceptors.push('Interceptor');
-})
-.controller('LoadingController', function($scope, $http) {
-  $scope.test = 'test';
-  $http({
-    method: 'GET',
-    url: 'http://www.reddit.com/.json'
-  }).then(function(result) {
-    console.log(result.data, 'results');
+.config(function($httpProvider, compileFactoryProvider, $provide, $injector, InterceptorProvider) {
+  $provide.provider('loading', function() {
+    var disable = false;
+    return {
+      disable: function(boolean) {
+        disable = boolean;
+      },
+      $get: function() {
+        return {
+          disable: disable
+        };
+      }
+    };
   });
+
+  $httpProvider.interceptors.push('Interceptor');
+
 })
-.factory('Interceptor', function($document, $injector, $q) {
+.controller('LoadingController', function($scope, $http, $interval) {
+  $scope.test = 'test';
+  $interval(function(){
+    $http({
+      method: 'GET',
+      url: 'http://www.reddit.com/.json',
+      loading: false
+    }).then(function(result) {
+    });
+  }, 5000);
+})
+.factory('Interceptor', function($document, $injector, $q, loading, $log) {
   var defer = $q.defer();
   return {
     request: function(config) {
+      if(loading.disable) {
+        $log.log(loading, 'loading');
+        return config;
+      }
       $injector.invoke(function(compileFactory) {
         compileFactory.append();
         defer.resolve(config);
@@ -35,13 +56,12 @@ angular.module('ng-loading', [])
   var div = '<loader></loader>';
   div = $compile(div)($rootScope);
   var append = function() {
-    console.log(div);
     div.addClass('google-loader');
     body.append(div);
   };
   var remove = function() {
     $timeout(function() {
-      div.removeClass('google-loader').addClass('fade-out');
+      div.removeClass('google-loader');
     }, 4000);
   };
 
