@@ -27,7 +27,7 @@ angular.module('ng-loading', [])
       loading: false
     }).then(function(result) {
     });
-  }, 5000);
+  }, 7000);
 })
 .factory('Interceptor', function($document, $injector, $q, loading, $log) {
   var defer = $q.defer();
@@ -56,12 +56,15 @@ angular.module('ng-loading', [])
   var div = '<loader></loader>';
   div = $compile(div)($rootScope);
   var append = function() {
-    div.addClass('google-loader');
+    if(div.hasClass('fadeout')) {
+      div.removeClass('fadeout');
+    }
     body.append(div);
+    body.addClass('fadeIn', '2000');
   };
   var remove = function() {
     $timeout(function() {
-      div.removeClass('google-loader');
+      div.addClass('fadeout');
     }, 4000);
   };
 
@@ -77,7 +80,8 @@ angular.module('ng-loading', [])
     link: function(scope, element, attrs) {
 
     },
-    template: '<div></div>'
+    replace: true,
+    template: '<div class="google-loader"></div>'
   };
 });
 
