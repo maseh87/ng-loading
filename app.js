@@ -3,13 +3,19 @@ angular.module('ng-loading', [])
 .config(function($httpProvider, compileFactoryProvider, $provide) {
   $provide.provider('loading', function() {
     var enable = true;
+    var givenClass;
+
     return {
       enable: function(value) {
         enable = value;
       },
+      class: function(className){
+        givenClass = className;
+      },
       $get: function() {
         return {
-          enable: enable
+          enable: enable,
+          class: givenClass
         };
       }
     };
@@ -48,14 +54,16 @@ angular.module('ng-loading', [])
   };
 })
 .factory('compileFactory', function($compile, $rootScope, $document, $timeout) {
+  //compile the directive to register into the dom
   var body = angular.element($document[0].body);
   var div = '<loader></loader>';
   div = $compile(div)($rootScope);
+  console.log(div, 'div');
+
   var append = function() {
     if(div.hasClass('fadeout')) {
       div.removeClass('fadeout');
     }
-    body.addClass('fadeIn', '2000');
     body.append(div);
   };
   var remove = function() {
@@ -69,15 +77,25 @@ angular.module('ng-loading', [])
     remove: remove
   };
 })
-.directive('loader', function() {
-  return {
+.directive('loader', function(loading) {
+  loading.class = 'spinner';
+  var directive = {
     restrict: 'EAC',
     scope: {},
-    link: function(scope, element, attrs) {
-    },
+    link: link,
     replace: true,
-    template: '<div class="google-loader"></div>'
+    template: '<div class="wrapper">' +
+      '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' +
+        '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' +
+      '</svg>' +
+      '</div>'
   };
+
+  function link(scope, element, attrs) {
+
+  }
+
+  return directive;
 });
 
 
