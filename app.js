@@ -78,7 +78,6 @@ angular.module('ng-loading', [])
   };
 })
 .directive('loader', function(loading) {
-  loading.class = 'spinner';
   var directive = {
     restrict: 'EAC',
     scope: {},
