@@ -1,6 +1,7 @@
 angular.module('ng-loading', [])
 
 .config(function($httpProvider, compileFactoryProvider, $provide) {
+  //Loading Provider Used to add options to ng-loading
   $provide.provider('loading', function() {
     var enable = true;
     var givenClass;
@@ -20,15 +21,22 @@ angular.module('ng-loading', [])
       }
     };
   });
+  //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
 })
-.controller('LoadingController', function($scope, $http, $interval) {
+.controller('LoadingController', function($scope, $http, $interval, $document) {
+  var body = angular.element($document[0].body);
   $scope.test = function() {
     $http({
       method: 'GET',
       url: 'http://www.reddit.com/.json',
     }).then(function(result) {
     });
+    // if(body.hasClass('overlay')) {
+    //   body.removeClass('overlay');
+    // } else {
+    //   body.addClass('overlay', 2000);
+    // }
   };
 })
 .factory('Interceptor', function($document, $injector, $q, loading, $log) {
@@ -58,7 +66,6 @@ angular.module('ng-loading', [])
   var body = angular.element($document[0].body);
   var div = '<loader></loader>';
   div = $compile(div)($rootScope);
-  console.log(div, 'div');
 
   var append = function() {
     if(div.hasClass('fadeout')) {
@@ -77,25 +84,36 @@ angular.module('ng-loading', [])
     remove: remove
   };
 })
+//directive to be attached to the DOM
 .directive('loader', function(loading) {
   var directive = {
     restrict: 'EAC',
     scope: {},
-    link: link,
+    compile: function(telem, tattrs){
+      console.log('--compile--');
+      return {
+        pre: function(scope, elem, attrs) {
+          console.log('--preLink--');
+        },
+        post: function(scope, elem, attrs) {
+          console.log('--postLink--');
+        }
+      };
+    },
     replace: true,
-    template: '<div class="wrapper">' +
-      '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' +
-        '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' +
-      '</svg>' +
-      '</div>'
+    template: function(elem, attrs) {
+      console.log(elem, 'a');
+      console.log(attrs, 'b');
+      return '<div></div>';
+    }
   };
-
-  function link(scope, element, attrs) {
-
-  }
-
   return directive;
 });
 
 
 
+    // '<div class="wrapper">' +
+    //   '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' +
+    //     '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' +
+    //   '</svg>' +
+    //   '</div>'
