@@ -31,6 +31,7 @@ angular.module('ng-loading', [])
       method: 'GET',
       url: 'http://www.reddit.com/.json',
     }).then(function(result) {
+      console.log(result.data);
     });
     // if(body.hasClass('overlay')) {
     //   body.removeClass('overlay');
@@ -104,7 +105,12 @@ angular.module('ng-loading', [])
     template: function(elem, attrs) {
       console.log(elem, 'a');
       console.log(attrs, 'b');
-      return '<div></div>';
+      // return '<div class="wrapper">' +
+      // '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' +
+      //   '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' +
+      // '</svg>' +
+      // '</div>';
+      return '<div class="google-loader"></div>'
     }
   };
   return directive;
