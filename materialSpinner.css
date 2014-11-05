@@ -2,15 +2,9 @@
   text-align: center;
   position: absolute;
   z-index: 11000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
 }
 
 .spinner {
-  text-align: center;
   -webkit-animation: rotator 1.4s linear infinite;
           animation: rotator 1.4s linear infinite;
 }
