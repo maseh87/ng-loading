@@ -96,17 +96,6 @@ angular.module('ng-loading', [])
   var directive = {
     restrict: 'EAC',
     scope: {},
-    compile: function(telem, tattrs){
-      console.log('--compile--');
-      return {
-        pre: function(scope, elem, attrs) {
-          console.log('--preLink--');
-        },
-        post: function(scope, elem, attrs) {
-          console.log('--postLink--');
-        }
-      };
-    },
     replace: true,
     template:
       '<div class="wrapper box fade-out">' +
