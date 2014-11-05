@@ -24,17 +24,6 @@ angular.module('ng-loading', [])
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
 })
-.controller('LoadingController', function($scope, $http, $interval, $document) {
-  var body = angular.element($document[0].body);
-  $scope.test = function() {
-    $http({
-      method: 'GET',
-      url: 'http://www.reddit.com/.json',
-    }).then(function(result) {
-      console.log(result.data);
-    });
-  };
-})
 .factory('Interceptor', function($document, $injector, $q, loading, $log) {
   var defer = $q.defer();
   return {
@@ -45,6 +34,7 @@ angular.module('ng-loading', [])
       }
       $injector.invoke(function(compileFactory) {
         compileFactory.append();
+        compileFactory.fadeIn();
         defer.resolve(config);
       });
       return defer.promise;
@@ -57,6 +47,17 @@ angular.module('ng-loading', [])
     }
   };
 })
+.controller('LoadingController', function($scope, $http, $interval, $document) {
+  var body = angular.element($document[0].body);
+  $scope.test = function() {
+    $http({
+      method: 'GET',
+      url: 'http://www.reddit.com/.json',
+    }).then(function(result) {
+      console.log(result.data);
+    });
+  };
+})
 .factory('compileFactory', function($compile, $rootScope, $document, $timeout) {
   //compile the directive to register into the dom
   var body = angular.element($document[0].body);
@@ -64,19 +65,29 @@ angular.module('ng-loading', [])
   div = $compile(div)($rootScope);
 
   var append = function() {
-    if(div.hasClass('fadeout')) {
-      div.removeClass('fadeout');
-    }
     body.append(div);
   };
+
+  var fadeIn = function() {
+    $timeout(function() {
+      div.removeClass('fade-out');
+      div.addClass('fade-in');
+    }, 200);
+  };
+
   var remove = function() {
     $timeout(function() {
-      div.addClass('fadeout');
-    }, 3000);
+      div.addClass('fade-out');
+    }, 3000).then(function() {
+      $timeout(function() {
+        div.remove();
+      },700);
+    });
   };
 
   return {
     append: append,
+    fadeIn: fadeIn,
     remove: remove
   };
 })
@@ -97,24 +108,15 @@ angular.module('ng-loading', [])
       };
     },
     replace: true,
-    template: function(elem, attrs) {
-      console.log(elem, 'a');
-      console.log(attrs, 'b');
+    template:
       // return '<div class="wrapper">' +
       // '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' +
       //   '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' +
       // '</svg>' +
       // '</div>';
-      return '<div class="google-loader"></div>'
-    }
+      '<div class="box fade-out">' +
+        '<div class="google-loader"></div>' +
+      '</div>'
   };
   return directive;
 });
-
-
-
-    // '<div class="wrapper">' +
-    //   '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' +
-    //     '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' +
-    //   '</svg>' +
-    //   '</div>'
