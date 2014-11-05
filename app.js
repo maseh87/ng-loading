@@ -33,11 +33,6 @@ angular.module('ng-loading', [])
     }).then(function(result) {
       console.log(result.data);
     });
-    // if(body.hasClass('overlay')) {
-    //   body.removeClass('overlay');
-    // } else {
-    //   body.addClass('overlay', 2000);
-    // }
   };
 })
 .factory('Interceptor', function($document, $injector, $q, loading, $log) {
