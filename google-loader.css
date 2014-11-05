@@ -10,24 +10,6 @@
   padding-bottom: 20px;
 }
 
-.second {
-  text-align: center;
-  border: 1px solid black;
-  padding-bottom: 20px;
-}
-.test {
-  text-align: center;
-  padding-top: 20px;
-}
-
-.fadeIn {
-  opacity: 1;
-}
-
-.fadeout {
-  opacity: 0;
-}
-
 .google-loader {
   position: absolute;
   top: calc(50% - 25px);

@@ -109,14 +109,14 @@ angular.module('ng-loading', [])
     },
     replace: true,
     template:
-      // return '<div class="wrapper">' +
-      // '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' +
-      //   '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' +
-      // '</svg>' +
-      // '</div>';
-      '<div class="box fade-out">' +
-        '<div class="google-loader"></div>' +
+      '<div class="wrapper box fade-out">' +
+      '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' +
+        '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' +
+      '</svg>' +
       '</div>'
+      // '<div class="box fade-out">' +
+      //   '<div class="google-loader"></div>' +
+      // '</div>'
   };
   return directive;
 });
