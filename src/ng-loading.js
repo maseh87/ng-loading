@@ -22,30 +22,30 @@ angular.module('ng-loading', [
     //extend the config object with the available object passed in globally
     loadService.load = function(configObj) {
       var c, o;
-      //verify the configObj before the provider is registered
+      //verify the overlay obj before the provider is registered
       if(configObj.overlay) {
         o = verify(configObj.overlay, 'overlay');
       }
-
+      //verify the configObj properties before the provider is registered
       c = verify(configObj);
+      //extend new properties onto the config obj
       _.extend(config, c);
-      config.overlay = o;
+      //extend new properties onto the overlay obj
+      _.extend(overlay, o);
     };
 
     function verify(obj, option) {
-      console.log(obj, '------config');
-
       //make sure configObj is an Object
       var cObj = {},
           oObj = {};
-
+      //verify that an object was passed in
       if(!_.isPlainObject(obj)) {
         throw 'an object must be passed in';
       }
-
+      //option is passed in to check the overlay obj
       if(option) {
         //check overlay color
-        if(obj.color) {
+        if(obj.color[0] === '#') {
           oObj.color = convertColor(obj.color);
         }
         //check overlay opacity
