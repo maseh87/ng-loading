@@ -17,4 +17,12 @@ describe('ng-loading', function() {
     expect(provider).to.not.be(null);
   });
 
+  it('should return an object', function() {
+    expect(provider.$get()).to.be.an('object');
+  });
+
+  it('should return our configured object', function() {
+    expect(provider.$get().config).to.be.an('object');
+  });
+
 });
