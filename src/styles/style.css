@@ -9,7 +9,7 @@ body {
   opacity: 0;
 }
 
-.box {
+.overlay {
   top: 0px;
   left: 0px;
   height: 100%;

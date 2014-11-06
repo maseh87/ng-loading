@@ -8,17 +8,25 @@ angular.module('ng-loading', [
   //Loading Provider Used to add options to ng-loading
   $provide.provider('loading', function() {
 
-    //create the default config object to be used in the interceptor service
-    var config = {};
     var loadService = {};
+    //create the default config object to be used in the interceptor service
+    var config = {
+      overlay: 'overlay',
+      class: 'load-bar-inbox'
+    };
+
+    var verify = function(obj) {
+      //make sure configObj is an Object
+      if(!_.isPlainObject(obj)) {
+        throw 'The .load method in your config block only takes an Object as the parameter!';
+      }
+    };
 
     //extend the config object with the available object passed in globally
     loadService.load = function(configObj) {
-      //make sure configObj is an Object
-      if(!_.isPlainObject(configObj)) {
-        throw 'The .load method in your config block only takes an Object as the parameter!';
-      }
-      config.class = config.class || 'load-bar-inbox';
+      //verify the configObj before the provider is registered
+      verify(configObj);
+
       _.extend(config, configObj);
     };
 
@@ -26,7 +34,8 @@ angular.module('ng-loading', [
     //required when creating provider constructors
     loadService.$get = function() {
       return {
-        config: config
+        config: config,
+        verify: verify
       };
     };
     //return config object
