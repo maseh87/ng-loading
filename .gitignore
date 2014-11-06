@@ -1,4 +1,4 @@
-src/lib
-demo/lib
+/src/lib
+/demo/lib
 /node_modules
 /specs
