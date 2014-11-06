@@ -19,6 +19,11 @@ module.exports = function(config) {
       'src/lib/lodash/dist/lodash.js',
       'node_modules/expect.js/index.js',
       'src/lib/angular-mocks/angular-mocks.js',
+      // 'src/directives/loader-directive.js',
+      // 'src/services/compile-factory.js',
+      // 'src/services/interceptor.js',
+      // 'src/services/services.js',
+      // 'src/ng-loading.js',
       'src/**/*.js',
       'specs/**/*.js'
     ],

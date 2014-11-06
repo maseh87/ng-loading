@@ -12,17 +12,18 @@ angular.module('ng-loading', [
     //create the default config object to be used in the interceptor service
     var config = {
       class: 'load-bar-inbox',
-      templateUrl: ''
-    };
-
-    var overlay = {
-        display: 'overlay',
+      templateUrl: '',
+      overlay: {
+        display: '',
         color: '',
         fadeInSpeed: '',
         fadeOutSpeed: ''
+      }
     };
 
+
     var verify = function(obj) {
+      console.log('----------verify------');
       //make sure configObj is an Object
       if(!_.isPlainObject(obj)) {
         throw 'The .load method in your config block only takes an Object as the parameter!';
