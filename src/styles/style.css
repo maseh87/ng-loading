@@ -16,7 +16,7 @@ body {
   width: 100%;
   z-index: 10000;
   position: fixed;
-  background: rgba(0, 0, 0, 0.22);
+  /*background: rgba(192, 192, 192, 0.5);*/
   -webkit-transition: opacity .5s;
   transition: opacity .5s;
 }
