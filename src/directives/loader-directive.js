@@ -6,8 +6,6 @@ angular.module('directives', [])
   var link = function(scope, elem, attrs) {
     elem[0].style.background = loading.config.overlay.color;
     elem[0].style.transition = loading.config.transitionSpeed;
-    console.log(elem[0].style.transition);
-
   };
 
   var directive = {
@@ -37,6 +35,7 @@ angular.module('directives', [])
       // '</div>'
 
   };
+
   //return the directive object
   return directive;
 });

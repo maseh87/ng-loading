@@ -54,6 +54,7 @@ angular.module('ng-loading', [
         }
         return oObj;
       }
+      //return config object if option is undefined
       return obj;
     }
 
