@@ -7,7 +7,7 @@ angular.module('Demo', [
   loadingProvider
     .load({
       enableOverlay: false,
-      class: 'load-bar-inbox'
+      // class: 'load-bar-inbox'
     });
 })
 .controller('LoadingController', function($scope, $http, $interval, $document) {

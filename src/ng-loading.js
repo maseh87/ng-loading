@@ -18,6 +18,7 @@ angular.module('ng-loading', [
       if(!_.isPlainObject(configObj)) {
         throw 'The .load method in your config block only takes an Object as the parameter!';
       }
+      config.class = config.class || 'load-bar-inbox';
       _.extend(config, configObj);
     };
 
