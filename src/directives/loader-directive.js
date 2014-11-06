@@ -2,10 +2,12 @@ angular.module('directives', [])
 
 //directive to be attached to the DOM
 .directive('loader', function(loading) {
-  console.log(loading.config, 'directive section');
 
   var link = function(scope, elem, attrs) {
     elem[0].style.background = loading.config.overlay.color;
+    elem[0].style.transition = loading.config.transitionSpeed;
+    console.log(elem[0].style.transition);
+
   };
 
   var directive = {

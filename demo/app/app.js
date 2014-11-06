@@ -8,8 +8,7 @@ angular.module('Demo', [
       overlay: {
         color: '#FFFFFF',
         opacity: '0.1',
-        fadeInSpeed: '',
-        fadeOutSpeed: ''
+        transitionSpeed: ''
       }
     });
 })

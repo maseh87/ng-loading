@@ -12,14 +12,20 @@ angular.module('ng-loading', [
     var config = {
       class: 'load-bar-inbox',
       templateUrl: '',
+      transitionSpeed: '.5s',
       overlay: {
         display: '',
         color: '',
-        fadeInSpeed: '',
-        fadeOutSpeed: ''
       }
     };
 
+    //extend the config object with the available object passed in globally
+    loadService.load = function(configObj) {
+      //verify the configObj before the provider is registered
+      verify(configObj);
+      console.log(config, '------config');
+      // _.extend(config, configObj);
+    };
 
     function verify(obj) {
       //make sure configObj is an Object
@@ -51,13 +57,6 @@ angular.module('ng-loading', [
     }
 
 
-    //extend the config object with the available object passed in globally
-    loadService.load = function(configObj) {
-      //verify the configObj before the provider is registered
-      verify(configObj);
-      console.log(config, '------config');
-      // _.extend(config, configObj);
-    };
 
     //set $get function to be called by angular injector
     //required when creating provider constructors
