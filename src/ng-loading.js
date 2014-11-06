@@ -21,21 +21,23 @@ angular.module('ng-loading', [
     };
 
 
-    var verify = function(obj) {
-      console.log('----------verify------');
+    function verify(obj) {
       //make sure configObj is an Object
       if(!_.isPlainObject(obj)) {
         throw 'The .load method in your config block only takes an Object as the parameter!';
       }
+
       //check overlay color
       if(obj.overlay.color) {
         config.overlay.color = convertColor(obj.overlay.color);
       }
-      // config.overlay = overlay;
-      //check overlay
-      // if(!obj.overlay)
-    };
+      //check overlay opacity
+      if(obj.overlay.opacity) {
+        console.log(config.overlay.color, 'overlay color');
+      }
+    }
 
+    //converts the hex color into a rgba color
     function convertColor(hColor) {
       var R = parseInt(cutHex(hColor).substring(0, 2), 16);
       var G = parseInt(cutHex(hColor).substring(2, 4), 16);
@@ -43,6 +45,7 @@ angular.module('ng-loading', [
       return 'rgba(' + R + ', ' + G + ', ' + B + ', ' + '0.5)';
     }
 
+    //removes the # from the front of the hex color
     function cutHex(hColor) {
       return (hColor.charAt(0) === '#') ? hColor.substring(1, 7) : hColor;
     }
@@ -64,9 +67,11 @@ angular.module('ng-loading', [
         verify: verify
       };
     };
+
     //return config object
     return loadService;
   });
+
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
 });

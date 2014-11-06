@@ -6,7 +6,10 @@ angular.module('Demo', [
   loadingProvider
     .load({
       overlay: {
-        color: '#FFFFFF'
+        color: '#FFFFFF',
+        opacity: '0.1',
+        fadeInSpeed: '',
+        fadeOutSpeed: ''
       }
     });
 })
