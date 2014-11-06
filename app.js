@@ -41,7 +41,7 @@ angular.module('ng-loading', [])
     },
     response: function(response) {
       $injector.invoke(function(compileFactory) {
-        // compileFactory.remove();
+        compileFactory.remove();
       });
       return response;
     }

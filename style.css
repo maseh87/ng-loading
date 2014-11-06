@@ -1,7 +1,7 @@
 body {
-  position: relative;
   margin: -16px 0px 0px 0px;
 }
+
 .fade-in {
   opacity: 1;
 }
@@ -11,13 +11,12 @@ body {
 }
 
 .box {
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
   top: 0px;
   left: 0px;
+  height: 100%;
+  width: 100%;
   z-index: 10000;
-  position: absolute;
+  position: fixed;
   background: rgba(0, 0, 0, 0.22);
   -webkit-transition: opacity .5s;
   transition: opacity .5s;
