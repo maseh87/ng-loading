@@ -8,12 +8,11 @@ angular.module('ng-loading', [
   //Loading Provider Used to add options to ng-loading
   $provide.provider('loading', function() {
     //create the default config object to be used in the interceptor service
+    var loadObj;
+
     var config = {
-      enable: function(value) {
-        enable = value;
-      },
-      class: function(className){
-        givenClass = className;
+      load: function(configObj) {
+        loadObj._merge(configObj);
       }
     };
 
@@ -24,8 +23,7 @@ angular.module('ng-loading', [
     //required when creating provider constructors
     config.$get = function() {
       return {
-        enable: this.enable,
-        class: this.givenClass
+        load: loadObj
       };
     };
     //return config object
