@@ -51,7 +51,7 @@
           animation-iteration-count: infinite;
   -webkit-animation-timing-function: steps(1);
           animation-timing-function: steps(1);
-  bottom: 0;
+  top: 0;
   height: 5px;
   left: 0;
   position: fixed;
@@ -90,20 +90,4 @@
   -webkit-transform-origin: right center;
       -ms-transform-origin: right center;
           transform-origin: right center;
-}
-
-body {
-  background-color: whitesmoke;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100vh;
-  margin: 0;
-}
-
-.logo-video {
-  margin: auto;
-  width: 500px;
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
 }

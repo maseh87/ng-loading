@@ -1,13 +1,3 @@
-height,
-body {
-  height: 100%;
-  background: #e67e22;
-}
-
-* {
-  box-model: border-box;
-}
-
 .nexus {
   position: absolute;
   text-align: center;
