@@ -1,5 +1,5 @@
 .fade-in {
-  opacity: .4;
+  opacity: 1;
 }
 
 .fade-out {
@@ -13,7 +13,7 @@
   left: 0px;
   z-index: 10000;
   position: absolute;
-  background: #000000;
+  background: rgba(0, 0, 0, 0.22);
   -webkit-transition: opacity .5s;
   transition: opacity .5s;
 }
