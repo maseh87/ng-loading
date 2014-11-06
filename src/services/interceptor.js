@@ -3,6 +3,9 @@ angular.module('interceptor', [])
   var defer = $q.defer();
   return {
     request: function(config) {
+      //disable loading screen for a per request basis
+      if(config.showLoading === false) return config;
+
       $injector.invoke(function(compileFactory) {
         compileFactory.append();
         compileFactory.fadeIn();

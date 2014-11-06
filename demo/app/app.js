@@ -18,6 +18,7 @@ angular.module('Demo', [
     $http({
       method: 'GET',
       url: 'http://www.reddit.com/.json',
+      // showLoading: false
     }).then(function(result) {
       console.log(result.data);
     });
