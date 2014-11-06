@@ -17,7 +17,7 @@ module.exports = function(config) {
     files: [
       'src/lib/angular/angular.js',
       'src/lib/lodash/dist/lodash.js',
-
+      'src/**/*.js',
       'specs/**/*.js'
     ],
 
