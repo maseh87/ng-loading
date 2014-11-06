@@ -13,34 +13,48 @@ angular.module('ng-loading', [
       class: 'load-bar-inbox',
       templateUrl: '',
       transitionSpeed: '.5s',
-      overlay: {
-        display: '',
-        color: '',
-      }
+    };
+    var overlay = {
+      display: '',
+      color: ''
     };
 
     //extend the config object with the available object passed in globally
     loadService.load = function(configObj) {
+      var c, o;
       //verify the configObj before the provider is registered
-      verify(configObj);
-      console.log(config, '------config');
-      // _.extend(config, configObj);
+      if(configObj.overlay) {
+        o = verify(configObj.overlay, 'overlay');
+      }
+
+      c = verify(configObj);
+      _.extend(config, c);
+      config.overlay = o;
     };
 
-    function verify(obj) {
+    function verify(obj, option) {
+      console.log(obj, '------config');
+
       //make sure configObj is an Object
+      var cObj = {},
+          oObj = {};
+
       if(!_.isPlainObject(obj)) {
-        throw 'The .load method in your config block only takes an Object as the parameter!';
+        throw 'an object must be passed in';
       }
 
-      //check overlay color
-      if(obj.overlay.color) {
-        config.overlay.color = convertColor(obj.overlay.color);
+      if(option) {
+        //check overlay color
+        if(obj.color) {
+          oObj.color = convertColor(obj.color);
+        }
+        //check overlay opacity
+        if(obj.opacity) {
+          console.log(obj.color, 'overlay color');
+        }
+        return oObj;
       }
-      //check overlay opacity
-      if(obj.overlay.opacity) {
-        console.log(config.overlay.color, 'overlay color');
-      }
+      return obj;
     }
 
     //converts the hex color into a rgba color
@@ -57,7 +71,7 @@ angular.module('ng-loading', [
     }
 
 
-
+    config.overlay = overlay;
     //set $get function to be called by angular injector
     //required when creating provider constructors
     loadService.$get = function() {
