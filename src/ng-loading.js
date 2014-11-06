@@ -11,14 +11,15 @@ angular.module('ng-loading', [
     var loadService = {};
     //create the default config object to be used in the interceptor service
     var config = {
-      overlay: {
+      class: 'load-bar-inbox',
+      templateUrl: ''
+    };
+
+    var overlay = {
         display: 'overlay',
         color: '',
         fadeInSpeed: '',
         fadeOutSpeed: ''
-      },
-      class: 'load-bar-inbox',
-      templateUrl: ''
     };
 
     var verify = function(obj) {
@@ -26,14 +27,33 @@ angular.module('ng-loading', [
       if(!_.isPlainObject(obj)) {
         throw 'The .load method in your config block only takes an Object as the parameter!';
       }
+      //check overlay color
+      if(obj.overlay.color) {
+        overlay.color = convertColor(obj.overlay.color);
+      }
+      config.overlay = overlay;
+      //check overlay
+      // if(!obj.overlay)
     };
+
+    function convertColor(hColor) {
+      var R = parseInt(cutHex(hColor).substring(0, 2), 16);
+      var G = parseInt(cutHex(hColor).substring(2, 4), 16);
+      var B = parseInt(cutHex(hColor).substring(4, 6), 16);
+      return 'rgba(' + R + ', ' + G + ', ' + B + ', ' + '0.5)';
+    }
+
+    function cutHex(hColor) {
+      return (hColor.charAt(0) === '#') ? hColor.substring(1, 7) : hColor;
+    }
+
 
     //extend the config object with the available object passed in globally
     loadService.load = function(configObj) {
       //verify the configObj before the provider is registered
       verify(configObj);
 
-      _.extend(config, configObj);
+      // _.extend(config, configObj);
     };
 
     //set $get function to be called by angular injector

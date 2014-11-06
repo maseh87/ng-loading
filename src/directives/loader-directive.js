@@ -2,12 +2,17 @@ angular.module('directives', [])
 
 //directive to be attached to the DOM
 .directive('loader', function(loading) {
-  console.log(loading, 'directive section');
+  console.log(loading.config.overlay, 'directive section');
+
+  var link = function(scope, elem, attrs) {
+    elem[0].style.background = loading.config.overlay.color;
+  };
 
   var directive = {
     restrict: 'EAC',
     scope: {},
     replace: true,
+    link: link,
     template:
       // '<div class="box fade-out">' +
       //   '<div class="wrapper">' +

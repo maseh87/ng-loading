@@ -3,10 +3,6 @@ angular.module('interceptor', [])
   var defer = $q.defer();
   return {
     request: function(config) {
-      if(!loading.config.enableOverlay) {
-        $log.log(loading.config, 'loading');
-        // return config;
-      }
       $injector.invoke(function(compileFactory) {
         compileFactory.append();
         compileFactory.fadeIn();

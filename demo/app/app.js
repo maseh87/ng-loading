@@ -3,10 +3,11 @@ angular.module('Demo', [
 ])
 
 .config(function(loadingProvider) {
-  console.log(loadingProvider, 'Loading Provider');
   loadingProvider
     .load({
-      enableOverlay: false,
+      overlay: {
+        color: '#FFFFFF'
+      }
     });
 })
 .controller('LoadingController', function($scope, $http, $interval, $document) {
