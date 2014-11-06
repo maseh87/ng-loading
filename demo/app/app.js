@@ -8,8 +8,8 @@ angular.module('Demo', [
       overlay: {
         color: '#FFFFFF',
         opacity: '0.1',
-        transitionSpeed: ''
-      }
+      },
+      transitionSpeed: '1s'
     });
 })
 .controller('LoadingController', function($scope, $http, $interval, $document) {
