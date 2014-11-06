@@ -14,7 +14,7 @@ angular.module('ng-loading', [
 
     //extend the config object with the available object passed in globally
     loadService.load = function(configObj) {
-        config._merge(configObj);
+        _.merge(config, configObj);
     };
 
     //set $get function to be called by angular injector
