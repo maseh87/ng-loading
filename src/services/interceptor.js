@@ -4,7 +4,7 @@ angular.module('interceptor', [])
   return {
     request: function(config) {
       if(!loading.config.enableOverlay) {
-        $log.log(loading.config.enableOverlay, 'loading');
+        $log.log(loading.config, 'loading');
         // return config;
       }
       $injector.invoke(function(compileFactory) {

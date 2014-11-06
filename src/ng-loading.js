@@ -14,11 +14,10 @@ angular.module('ng-loading', [
 
     //extend the config object with the available object passed in globally
     loadService.load = function(configObj) {
-      //make sure configObj is an object
+      //make sure configObj is an Object
       if(!_.isPlainObject(configObj)) {
         throw 'The .load method in your config block only takes an Object as the parameter!';
       }
-
       _.extend(config, configObj);
     };
 

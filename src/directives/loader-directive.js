@@ -2,6 +2,8 @@ angular.module('directives', [])
 
 //directive to be attached to the DOM
 .directive('loader', function(loading) {
+  console.log(loading, 'directive section');
+
   var directive = {
     restrict: 'EAC',
     scope: {},
@@ -16,7 +18,7 @@ angular.module('directives', [])
       // '</div>'
 
       '<div class="box fade-out">' +
-        '<div class="load-bar-inbox"></div>' +
+        '<div class="' + loading.config.class +  '"></div>' +
       '</div>'
 
       // '<div class="box fade-out">' +
