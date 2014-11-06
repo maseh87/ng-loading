@@ -13,7 +13,7 @@ describe('ng-loading', function() {
       inject(function(){});
   });
 
-  it('returns a value', function() {
+  it('should exist', function() {
     expect(provider).to.not.be(null);
   });
 
