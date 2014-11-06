@@ -52,7 +52,7 @@ angular.module('ng-loading', [
     loadService.load = function(configObj) {
       //verify the configObj before the provider is registered
       verify(configObj);
-
+      console.log(config, '------config');
       // _.extend(config, configObj);
     };
 

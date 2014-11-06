@@ -2,7 +2,7 @@ angular.module('directives', [])
 
 //directive to be attached to the DOM
 .directive('loader', function(loading) {
-  console.log(loading.config.overlay, 'directive section');
+  console.log(loading.config, 'directive section');
 
   var link = function(scope, elem, attrs) {
     elem[0].style.background = loading.config.overlay.color;

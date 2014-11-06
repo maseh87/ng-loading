@@ -17,6 +17,8 @@ module.exports = function(config) {
     files: [
       'src/lib/angular/angular.js',
       'src/lib/lodash/dist/lodash.js',
+      'node_modules/expect.js/index.js',
+      'src/lib/angular-mocks/angular-mocks.js',
       'src/**/*.js',
       'specs/**/*.js'
     ],
@@ -30,7 +32,9 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'src/directives/loader-directive.js': 'coverage'
+        'src/directives/loader-directive.js': 'coverage',
+        'src/services/compile-factory.js': 'coverage',
+        'src/services/interceptor.js': 'coverage'
     },
 
 
