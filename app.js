@@ -2,24 +2,30 @@ angular.module('ng-loading', [])
 
 .config(function($httpProvider, compileFactoryProvider, $provide) {
   //Loading Provider Used to add options to ng-loading
-  $provide.provider('loading', function() {
-    var enable = true;
-    var givenClass;
+  $provide.provider('loading', function(globalConfig) {
 
-    return {
+    //create the default config object to be used in the interceptor service
+    var config = {
       enable: function(value) {
         enable = value;
       },
       class: function(className){
         givenClass = className;
-      },
-      $get: function() {
-        return {
-          enable: enable,
-          class: givenClass
-        };
       }
     };
+
+    //extend the config object with the available object passed in globally
+    _.merge(config, globalConfig);
+
+    //set $get function to be called by angular injector
+    config.$get = function() {
+      return {
+        enable: enable,
+        class: givenClass
+      };
+    };
+    //return config object
+    return config;
   });
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
