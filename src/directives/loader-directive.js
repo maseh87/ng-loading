@@ -30,5 +30,6 @@ angular.module('directives', [])
       // '</div>'
 
   };
+  //return the directive object
   return directive;
 });
