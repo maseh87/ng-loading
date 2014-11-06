@@ -1,9 +1,9 @@
 angular.module('ng-loading', [])
 
 .config(function($httpProvider, compileFactoryProvider, $provide) {
+
   //Loading Provider Used to add options to ng-loading
   $provide.provider('loading', function(globalConfig) {
-
     //create the default config object to be used in the interceptor service
     var config = {
       enable: function(value) {
@@ -18,6 +18,7 @@ angular.module('ng-loading', [])
     _.merge(config, globalConfig);
 
     //set $get function to be called by angular injector
+    //required when creating provider constructors
     config.$get = function() {
       return {
         enable: enable,
