@@ -4,6 +4,10 @@ angular.module('Demo', [
 
 .config(function(loadingProvider) {
   console.log(loadingProvider, 'Loading Provider');
+  loadingProvider
+    .load({
+      enableOverlay: false
+    });
 })
 .controller('LoadingController', function($scope, $http, $interval, $document) {
   var body = angular.element($document[0].body);
