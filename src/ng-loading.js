@@ -11,8 +11,14 @@ angular.module('ng-loading', [
     var loadService = {};
     //create the default config object to be used in the interceptor service
     var config = {
-      overlay: 'overlay',
-      class: 'load-bar-inbox'
+      overlay: {
+        display: 'overlay',
+        color: '',
+        fadeInSpeed: '',
+        fadeOutSpeed: ''
+      },
+      class: 'load-bar-inbox',
+      templateUrl: ''
     };
 
     var verify = function(obj) {

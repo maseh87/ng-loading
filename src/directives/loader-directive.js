@@ -17,7 +17,7 @@ angular.module('directives', [])
       //   '<div>' +
       // '</div>'
 
-      '<div class="overlay fade-out">' +
+      '<div class="'+ loading.config.overlay.display +' fade-out">' +
         '<div class="' + loading.config.class +  '"></div>' +
       '</div>'
 
