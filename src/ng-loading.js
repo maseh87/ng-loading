@@ -4,7 +4,6 @@ angular.module('ng-loading', [
 ])
 
 .config(function($httpProvider, $provide) {
-
   //Loading Provider Used to add options to ng-loading
   $provide.provider('loading', function() {
 
@@ -30,9 +29,9 @@ angular.module('ng-loading', [
       }
       //check overlay color
       if(obj.overlay.color) {
-        overlay.color = convertColor(obj.overlay.color);
+        config.overlay.color = convertColor(obj.overlay.color);
       }
-      config.overlay = overlay;
+      // config.overlay = overlay;
       //check overlay
       // if(!obj.overlay)
     };
