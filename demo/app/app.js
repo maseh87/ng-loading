@@ -21,7 +21,17 @@ angular.module('Demo', [
     $http({
       method: 'GET',
       url: 'http://www.reddit.com/.json',
-      // showLoading: false
+      // showLoading: false,
+      loadingConfig: {
+      overlay: {
+        color: '#000000',
+        opacity: '.1',
+        display: true
+      },
+      transitionSpeed: '.3s',
+      // icon: 'spinner',
+      class: 'spinner'
+      }
     }).then(function(result) {
       console.log(result.data);
     });

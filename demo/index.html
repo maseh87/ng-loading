@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="../src/styles/style.css">
   <link rel="stylesheet" type="text/css" href="../src/lib/angular-material/angular-material.css">
   <link rel="stylesheet" type="text/css" href="../src/lib/angular-material/themes/light-blue-dark-theme.css">
+  <link rel="stylesheet" type="text/css" href="../src/lib/angular-material/themes/amber-theme.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles/demo.css">
 
@@ -35,9 +36,27 @@
       </h2>
     </md-toolbar>
     <div class="text" ng-controller="LoadingController">
-      <md-button class="md-fab" ng-click="test()">
-        <i class="fa fa-plus"></i>
-      </md-button>
+      <md-card>
+        <md-content class="md-whiteframe-z2">
+          <md-toolbar md-theme="amber" class="md-medium tall">
+            <div class="md-toolbar-tools">
+                <p>Overlay Options</p>
+            </div>
+          </md-toolbar>
+          <form style="padding: 20px;">
+            <div class="row">
+              <md-text-float label="color" ng-model="config.color"></md-text-float>
+              <md-text-float label="opacity" ng-model="config.opacity" type="text"></md-text-float>
+              <md-text-float label="display" ng-model="config.display" type="text"></md-text-float>
+            </div>
+            <div class="row"><br>
+              <md-button class="md-fab" ng-click="test()">
+                <img src='../src/lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
+              </md-button>
+            </div>
+          </form>
+        </md-content>
+      </md-card>
     </div>
   </div>
 

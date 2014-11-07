@@ -5,6 +5,12 @@ angular.module('interceptor', [])
     request: function(config) {
       //disable loading screen for a per request basis
       if(config.showLoading === false) return config;
+      // console.log(config)
+      if(config.loadingConfig) {
+        _.extend(loading.config, config.loadingConfig);
+        _.extend(loading.config.overlay, config.loadingConfig.overlay);
+        console.log(loading.config, 'loading config');
+      }
 
       $injector.invoke(function(compileFactory) {
         compileFactory.append();

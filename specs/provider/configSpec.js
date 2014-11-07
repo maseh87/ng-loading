@@ -16,7 +16,6 @@ describe('configOptions', function() {
 
   it('should exist', function() {
     expect(provider.load).to.be.an('function');
-    dump(provider.load);
   });
 
   it('should have a default class of load-bar-inbox', function() {
