@@ -15,7 +15,7 @@ angular.module('interceptor', [])
     },
     response: function(response) {
       $injector.invoke(function(compileFactory) {
-        compileFactory.remove();
+        // compileFactory.remove();
       });
       return response;
     }
