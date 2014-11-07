@@ -7,10 +7,10 @@ angular.module('Demo', [
     .load({
       overlay: {
         color: '#000000',
-        opacity: '.2',
+        opacity: '.8',
         display: true
       },
-      transitionSpeed: '1s'
+      transitionSpeed: '.3s'
     });
 })
 .controller('LoadingController', function($scope, $http, $interval, $document) {
