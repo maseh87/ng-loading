@@ -10,7 +10,8 @@ angular.module('Demo', [
         opacity: '.3',
         display: true
       },
-      transitionSpeed: '.8s'
+      transitionSpeed: '.8s',
+      class: 'spinner'
     });
 })
 .controller('LoadingController', function($scope, $http, $interval, $document) {
