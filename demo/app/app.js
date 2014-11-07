@@ -6,12 +6,13 @@ angular.module('Demo', [
   loadingProvider
     .load({
       overlay: {
-        color: '#8a2be2',
-        opacity: '.3',
+        color: '#000000',
+        opacity: '.1',
         display: true
       },
-      transitionSpeed: '.8s',
-      icon: 'fa fa-spinner fa-spin fa-5x'
+      transitionSpeed: '.3s',
+      // icon: 'spinner',
+      // class: 'spinner'
     });
 })
 .controller('LoadingController', function($scope, $http, $interval, $document) {
