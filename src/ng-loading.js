@@ -35,35 +35,35 @@ angular.module('ng-loading', [
     };
 
     function verify(obj, option) {
-      //make sure configObj is an Object
-      var cObj = {},
-          oObj = {};
       //verify that an object was passed in
       if(!_.isPlainObject(obj)) {
         throw 'an object must be passed in';
       }
       //option is passed in to check the overlay obj
       if(option) {
-        //check overlay color
-        if(obj.color[0] === '#') {
-          oObj.color = convertColor(obj.color);
+        if(obj.display === true) {
+          obj.display = 'overlay';
+          //check overlay color
+          if(obj.color[0] === '#' && obj.opacity) {
+            obj.color = convertColor(obj.color, obj.opacity);
+          }
+          //check overlay opacity
+          if(obj.opacity) {
+            console.log(obj.color, 'overlay color');
+          }
         }
-        //check overlay opacity
-        if(obj.opacity) {
-          console.log(obj.color, 'overlay color');
-        }
-        return oObj;
+        return obj;
       }
       //return config object if option is undefined
       return obj;
     }
 
     //converts the hex color into a rgba color
-    function convertColor(hColor) {
+    function convertColor(hColor, opacity) {
       var R = parseInt(cutHex(hColor).substring(0, 2), 16);
       var G = parseInt(cutHex(hColor).substring(2, 4), 16);
       var B = parseInt(cutHex(hColor).substring(4, 6), 16);
-      return 'rgba(' + R + ', ' + G + ', ' + B + ', ' + '0.5)';
+      return 'rgba(' + R + ', ' + G + ', ' + B + ', ' + opacity + ')';
     }
 
     //removes the # from the front of the hex color

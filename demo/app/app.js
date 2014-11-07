@@ -6,8 +6,9 @@ angular.module('Demo', [
   loadingProvider
     .load({
       overlay: {
-        color: '#FFFFFF',
-        opacity: '0.1',
+        color: '#000000',
+        opacity: '.2',
+        display: true
       },
       transitionSpeed: '1s'
     });
