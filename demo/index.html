@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>ng-Loading</title>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../src/styles/materialSpinner.css">
   <link rel="stylesheet" type="text/css" href="../src/styles/google-loader.css">
   <link rel="stylesheet" type="text/css" href="../src/styles/google-loader.css">
@@ -10,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="../src/styles/style.css">
   <link rel="stylesheet" type="text/css" href="../src/lib/angular-material/angular-material.css">
   <link rel="stylesheet" type="text/css" href="../src/lib/angular-material/themes/light-blue-dark-theme.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <script src="../src/lib/lodash/dist/lodash.js"></script>
   <script src="../src/lib/angular/angular.js"></script>
@@ -33,13 +33,14 @@
           <svg-icon></svg-icon>
         </md-icon>
       </div>
-      <span flex></span>
       <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
         <span>ngLoading</span>
       </h2>
     </md-toolbar>
     <div class="text" ng-controller="LoadingController">
-      <button class="my-button" ng-click="test()">Click Me</button>
+      <md-button class="md-fab" ng-click="test()">
+        <i class="fa fa-plus"></i>
+      </md-button>
     </div>
   </div>
 
