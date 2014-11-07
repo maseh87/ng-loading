@@ -12,7 +12,7 @@ angular.module('ng-loading', [
     //create the default config object to be used in the interceptor service
     var config = {
       class: 'load-bar-inbox',
-      templateUrl: '',
+      template: '',
       transitionSpeed: '.5s',
     };
     //default overlay options

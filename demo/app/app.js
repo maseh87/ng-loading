@@ -11,7 +11,7 @@ angular.module('Demo', [
         display: true
       },
       transitionSpeed: '.8s',
-      class: 'spinner'
+      class: 'fa fa-spinner'
     });
 })
 .controller('LoadingController', function($scope, $http, $interval, $document) {
