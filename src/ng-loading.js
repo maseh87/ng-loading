@@ -6,14 +6,16 @@ angular.module('ng-loading', [
 .config(function($httpProvider, $provide) {
   //Loading Provider Used to add options to ng-loading
   $provide.provider('loading', function() {
-
+    //service object available to the injector
     var loadService = {};
+
     //create the default config object to be used in the interceptor service
     var config = {
       class: 'load-bar-inbox',
       templateUrl: '',
       transitionSpeed: '.5s',
     };
+    //default overlay options
     var overlay = {
       display: '',
       color: ''
@@ -60,6 +62,7 @@ angular.module('ng-loading', [
 
     //converts the hex color into a rgba color
     function convertColor(hColor, opacity) {
+      opacity = opacity || '0.5';
       var R = parseInt(cutHex(hColor).substring(0, 2), 16);
       var G = parseInt(cutHex(hColor).substring(2, 4), 16);
       var B = parseInt(cutHex(hColor).substring(4, 6), 16);

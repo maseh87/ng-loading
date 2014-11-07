@@ -6,11 +6,11 @@ angular.module('Demo', [
   loadingProvider
     .load({
       overlay: {
-        color: '#000000',
-        opacity: '.8',
+        color: '#8a2be2',
+        opacity: '.3',
         display: true
       },
-      transitionSpeed: '.3s'
+      transitionSpeed: '.8s'
     });
 })
 .controller('LoadingController', function($scope, $http, $interval, $document) {
