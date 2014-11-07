@@ -48,6 +48,8 @@ angular.module('ng-loading', [
           //check overlay color
           if(obj.color[0] === '#' && obj.opacity) {
             obj.color = convertColor(obj.color, obj.opacity);
+          } else if(obj.color[0] === '#') {
+            obj.color = convertColor(obj.color, '0.5');
           }
           //check overlay opacity
           if(obj.opacity) {
