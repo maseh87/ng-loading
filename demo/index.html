@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>ng-Loading</title>
+  <link rel="stylesheet" type="text/css" href="./styles/prism.css">
   <link rel="stylesheet" type="text/css" href="../src/styles/materialSpinner.css">
   <link rel="stylesheet" type="text/css" href="../src/styles/google-loader.css">
   <link rel="stylesheet" type="text/css" href="../src/styles/google-loader.css">
@@ -13,6 +14,7 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles/demo.css">
 
+  <script src="./prism.js"></script>
   <script src="../src/lib/lodash/dist/lodash.js"></script>
   <script src="../src/lib/angular/angular.js"></script>
   <script src="../src/lib/hammerjs/hammer.js"></script>
@@ -36,31 +38,71 @@
       </h2>
     </md-toolbar>
     <div class="text" ng-controller="LoadingController">
+<!-- Overlay Options -->
       <md-card>
-        <md-content class="md-whiteframe-z2">
-          <md-toolbar md-theme="amber" class="md-medium tall">
-            <div class="md-toolbar-tools">
-                <p>Overlay Options</p>
-            </div>
-          </md-toolbar>
-          <div layout="horizontal">
-            <form style="padding: 20px;">
-            <md-switch ng-model="showLoading">
-                Show Overlay: {{ showLoading }}
-            </md-switch>
-              <div class="row">
-                <md-text-float label="color" ng-model="config.overlay.color"></md-text-float>
-                <md-text-float label="opacity" ng-model="config.overlay.opacity" type="text"></md-text-float>
-                <md-text-float label="display" ng-model="config.overlay.display" type="text"></md-text-float>
-              </div>
-            </form>
-            <div class="row"><br>
-              <md-button class="md-fab" ng-click="test()">
-                <img src='../src/lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
-              </md-button>
-            </div>
+        <md-toolbar md-theme="amber" class="md-medium tall">
+          <div class="md-toolbar-tools">
+              <p>Overlay Options</p>
           </div>
-        </md-content>
+        </md-toolbar>
+        <div layout="horizontal">
+          <form style="padding: 20px;">
+            <div class="row">
+              <md-text-float label="color" ng-model="config.overlay.color" id="color"></md-text-float>
+              <md-text-float label="opacity" ng-model="config.overlay.opacity" type="text"></md-text-float>
+            </div>
+          <div><br>
+            <md-button class="md-fab" ng-click="test()">
+              <img src='../src/lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
+            </md-button>
+          </div>
+          </form>
+          <pre><code class="language-markup md-whiteframe-z2">
+  loadingProvider
+    .load({
+      overlay: {
+        display: {{ config.overlay.display }},
+        color: {{ config.overlay.color }},
+        opacity: {{ config.overlay.opacity }}
+      }
+    })
+          </code></pre>
+        </div>
+      </md-card>
+<!-- Configuration Options -->
+      <md-card>
+        <md-toolbar md-theme="amber" class="md-medium tall">
+          <div class="md-toolbar-tools">
+              <p>Configuration Options</p>
+          </div>
+        </md-toolbar>
+        <div layout="horizontal">
+          <form style="padding: 20px;">
+            <div class="row">
+              <md-text-float label="transitionSpeed" ng-model="config.transitionSpeed"></md-text-float>
+              <md-text-float label="class" ng-model="config.class" type="text"></md-text-float>
+              <md-text-float label="icon" ng-model="config.icon" type="text"></md-text-float>
+            </div>
+          <div><br><br>
+            <md-button class="md-fab" ng-click="test()">
+              <img src='../src/lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
+            </md-button>
+          </div>
+          </form>
+          <pre><code class="language-markup md-whiteframe-z2">
+  loadingProvider
+    .load({
+      transitionSpeed: {{ config.transitionSpeed }},
+      class: {{ config.class }},
+      icon: {{ config.icon }},
+      overlay: {
+        display: {{ config.overlay.display }},
+        color: {{ config.overlay.color }},
+        opacity: {{ config.overlay.opacity }}
+      }
+    })
+          </code></pre>
+        </div>
       </md-card>
     </div>
   </div>

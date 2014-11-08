@@ -3,22 +3,22 @@ angular.module('Demo', [
 ])
 
 .config(function(loadingProvider) {
-  loadingProvider
-    .load({
-      overlay: {
-        color: '#000000',
-        opacity: '.1',
-        display: true
-      },
-      transitionSpeed: '.3s',
-      // icon: 'spinner',
-      // class: 'spinner'
-    });
+  // loadingProvider
+    // .load({
+    //   overlay: {
+    //     color: '#000000',
+    //     opacity: '.1',
+    //     display: true
+    //   },
+    //   transitionSpeed: '.3s',
+    //   // icon: 'spinner',
+    //   class: 'spinner'
+    // });
 })
-.controller('LoadingController', function($scope, $http, $interval, $document) {
+.controller('LoadingController', function($scope, $http, $interval, $document, $mdToast) {
   var body = angular.element($document[0].body);
   var config = {};
-  $scope.showLoading = true;
+  // $scope.showLoading = true;
   $scope.config = {
     overlay: {
       color: '#000000',
@@ -34,9 +34,17 @@ angular.module('Demo', [
       method: 'GET',
       url: 'http://www.reddit.com/.json',
       // showLoading: false,
-      loadingConfig: config
+      // loadingConfig: config
     }).then(function(result) {
-      console.log(result.data);
+      // console.log(result.data);
     });
   };
+
 });
+
+
+
+
+
+
+
