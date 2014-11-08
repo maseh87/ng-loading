@@ -20,6 +20,7 @@ angular.module('Demo', [
   var config = {};
   // $scope.showLoading = true;
   $scope.config = {
+    transitionSpeed: '.3s',
     overlay: {
       color: '#000000',
       opacity: '.5',
