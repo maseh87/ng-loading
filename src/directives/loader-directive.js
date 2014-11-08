@@ -17,14 +17,19 @@ angular.module('directives', [])
     replace: true,
     // link: link,
     template: function() {
-      return templates[loading.config.class];
-    },
-    compile: function(elem) {
+      if(loading.config.class === '') {
+        loading.config.class = 'load-bar-inbox';
+      }
       checkClass = loading.config.icon.slice(0, 2);
 
       if(checkClass === 'fa') {
         directive.template = templates['fa'];
       }
+
+      return templates[loading.config.class];
+    },
+    compile: function(elem) {
+
 
       if(loading.config.overlay) {
         if(loading.config.overlay.display !== 'overlay') {
