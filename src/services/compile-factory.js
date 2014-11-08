@@ -10,7 +10,6 @@ angular.module('compileFactory', [])
 
 
   var append = function() {
-    // compile();
     body = angular.element($document[0].body);
     div = '<loader></loader>';
     div = $compile(div)($rootScope);
