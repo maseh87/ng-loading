@@ -22,8 +22,8 @@ angular.module('Demo', [
   $scope.config = {
     transitionSpeed: '.3s',
     overlay: {
-      color: '#000000',
-      opacity: '.5',
+      color: '#FEFEFE',
+      opacity: '.3',
       display: true
     }
   };

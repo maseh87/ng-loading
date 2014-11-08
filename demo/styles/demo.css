@@ -6,3 +6,11 @@
   padding-left: 90px;
   padding-right: 90px;
 }
+
+body {
+  background-color: #EFEFEF;
+}
+
+md-card {
+  background-color: white;
+}
