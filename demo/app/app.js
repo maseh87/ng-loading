@@ -18,7 +18,14 @@ angular.module('Demo', [
 .controller('LoadingController', function($scope, $http, $interval, $document) {
   var body = angular.element($document[0].body);
   var config = {};
-  $scope.config = {};
+  $scope.showLoading = true;
+  $scope.config = {
+    overlay: {
+      color: '#000000',
+      opacity: '.5',
+      display: true
+    }
+  };
 
   $scope.test = function() {
     if($scope.config.overlay.display === 'true') $scope.config.overlay.display = true;

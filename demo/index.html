@@ -43,18 +43,23 @@
                 <p>Overlay Options</p>
             </div>
           </md-toolbar>
-          <form style="padding: 20px;">
-            <div class="row">
-              <md-text-float label="color" ng-model="config.overlay.color"></md-text-float>
-              <md-text-float label="opacity" ng-model="config.overlay.opacity" type="text"></md-text-float>
-              <md-text-float label="display" ng-model="config.overlay.display" type="text"></md-text-float>
-            </div>
+          <div layout="horizontal">
+            <form style="padding: 20px;">
+            <md-switch ng-model="showLoading">
+                Show Overlay: {{ showLoading }}
+            </md-switch>
+              <div class="row">
+                <md-text-float label="color" ng-model="config.overlay.color"></md-text-float>
+                <md-text-float label="opacity" ng-model="config.overlay.opacity" type="text"></md-text-float>
+                <md-text-float label="display" ng-model="config.overlay.display" type="text"></md-text-float>
+              </div>
+            </form>
             <div class="row"><br>
               <md-button class="md-fab" ng-click="test()">
                 <img src='../src/lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
               </md-button>
             </div>
-          </form>
+          </div>
         </md-content>
       </md-card>
     </div>
