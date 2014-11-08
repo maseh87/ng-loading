@@ -34,7 +34,7 @@ angular.module('Demo', [
       method: 'GET',
       url: 'http://www.reddit.com/.json',
       // showLoading: false,
-      // loadingConfig: config
+      loadingConfig: config
     }).then(function(result) {
       // console.log(result.data);
     });

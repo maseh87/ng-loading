@@ -18,25 +18,19 @@ angular.module('directives', [])
     // link: link,
     template: '<div class="'+ loading.config.overlay.display +' fade-out">' + '<div class="' + loading.config.class +  '"></div>' + '</div>',
     compile: function(elem) {
-      // return {
-      //   post: function(scope, elem, attrs) {
-          console.log('postlink', loading.config);
-          checkClass = loading.config.icon.slice(0, 2);
-          // directive.template = templates[loading.config.class];
+      checkClass = loading.config.icon.slice(0, 2);
 
-          if(checkClass === 'fa') {
-            directive.template = templates['fa'];
-          }
+      if(checkClass === 'fa') {
+        directive.template = templates['fa'];
+      }
 
-          if(loading.config.overlay) {
-            if(loading.config.overlay.display !== 'overlay') {
-              loading.config.overlay.display = loading.config.overlay.display || '';
-            }
-          }
-          elem[0].style.background = loading.config.overlay.color;
-          elem[0].style.transition = loading.config.transitionSpeed;
-      //   }
-      // };
+      if(loading.config.overlay) {
+        if(loading.config.overlay.display !== 'overlay') {
+          loading.config.overlay.display = loading.config.overlay.display || '';
+        }
+        elem[0].style.background = loading.config.overlay.color;
+        elem[0].style.transition = loading.config.transitionSpeed;
+      }
     }
   };
 
