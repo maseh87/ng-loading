@@ -48,6 +48,9 @@
         <div layout="horizontal">
           <form style="padding: 20px;">
             <div class="row">
+              <md-text-float label="transitionSpeed" ng-model="config.transitionSpeed"></md-text-float>
+              <md-text-float label="class" ng-model="config.class" type="text"></md-text-float>
+              <md-text-float label="icon" ng-model="config.icon" type="text"></md-text-float>
               <md-text-float label="color" ng-model="config.overlay.color" id="color"></md-text-float>
               <md-text-float label="opacity" ng-model="config.overlay.opacity" type="text"></md-text-float>
             </div>
@@ -57,39 +60,9 @@
             </md-button>
           </div>
           </form>
-          <pre><code class="language-markup md-whiteframe-z2">
-  loadingProvider
-    .load({
-      overlay: {
-        display: {{ config.overlay.display }},
-        color: {{ config.overlay.color }},
-        opacity: {{ config.overlay.opacity }}
-      }
-    })
-          </code></pre>
-        </div>
-      </md-card>
-<!-- Configuration Options -->
-      <md-card>
-        <md-toolbar md-theme="amber" class="md-medium tall">
-          <div class="md-toolbar-tools">
-              <p>Configuration Options</p>
-          </div>
-        </md-toolbar>
-        <div layout="horizontal">
-          <form style="padding: 20px;">
-            <div class="row">
-              <md-text-float label="transitionSpeed" ng-model="config.transitionSpeed"></md-text-float>
-              <md-text-float label="class" ng-model="config.class" type="text"></md-text-float>
-              <md-text-float label="icon" ng-model="config.icon" type="text"></md-text-float>
-            </div>
-          <div><br><br>
-            <md-button class="md-fab" ng-click="test()">
-              <img src='../src/lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
-            </md-button>
-          </div>
-          </form>
-          <pre><code class="language-markup md-whiteframe-z2">
+          <pre><code class="language-markup">
+
+
   loadingProvider
     .load({
       transitionSpeed: {{ config.transitionSpeed }},
@@ -104,6 +77,8 @@
           </code></pre>
         </div>
       </md-card>
+<!-- Configuration Options -->
+
     </div>
   </div>
 
