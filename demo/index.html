@@ -39,7 +39,7 @@
         </md-icon>
       </div>
       <h2 class="md-toolbar-tools" layout-arrange="center center">
-        <a href="https://github.com/maseh87/ng-loading"><span class="mega-octicon octicon-mark-github"></span></a>
+        <a href="https://github.com/maseh87/ng-loading  "><span class="mega-octicon octicon-mark-github"></span></a>
         <span>ngLoading</span>
       </h2>
       <span flex></span>
@@ -66,7 +66,9 @@
         </form>
         <md-card>
         <pre><code class="language-">
-  angular.module('ngLoading', [])
+  You can configure ngLoading globally
+
+  angular.module('myApp', ['ngLoading'])
   .config(function(loadingProvider) {
     loadingProvider
       .load({
@@ -79,13 +81,31 @@
           opacity: {{ config.overlay.opacity }}
         }
       })
-  })
+  });
         </code></pre>
         </md-card>
+        <md-button class="md-raised md-primary topButton">
+          OR
+        </md-button>
         <md-card>
-          <span>
-            ngLoading can be configured a few ways.
-          </span>
+          <pre><code class="language-">
+  For each individual http request
+
+  $http({
+    loadingConfig: {
+      transitionSpeed: {{ config.transitionSpeed }},
+      class: {{ config.class }},
+      icon: {{ config.icon }},
+      overlay: {
+        display: {{ config.overlay.display }},
+        color: {{ config.overlay.color }},
+        opacity: {{ config.overlay.opacity }}
+      }
+    }
+  }).then(function(result) {
+    //do something
+  });
+        </code></pre>
         </md-card>
       </div>
     </div>

@@ -16,9 +16,11 @@ md-card {
 }
 
 md-button .md-button-inner {
-  background: lightgreen;
+  /*background: lightgreen;*/
 }
 
-/*.code {
-  font-weight: bold;;
-}*/
+.topButton {
+  position: absolute;
+  margin-top: 20%;
+  margin-left: -1.3%;
+}
