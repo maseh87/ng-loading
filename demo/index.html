@@ -32,10 +32,19 @@
 <body>
   <div ng-app="Demo">
     <md-toolbar md-theme="purple" class="md-medium-tall md-whiteframe-z2 header">
-      <div class="md-toolbar-tools md-toolbar-tools-top"></div>
-      <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
+      <div class="md-toolbar-tools md-toolbar-tools-top">
+        <md-icon style="width: 24px; height: 24px;">
+          <svg-icon></svg-icon>
+        </md-icon>
+      </div>
+      <h2 class="md-toolbar-tools" layout-arrange="center center">
         <span>ngLoading</span>
       </h2>
+      <span flex></span>
+      <h2 class="md-toolbar-tools">
+        <div style="font-size: 18px">Beautiful, automatic loading screens for your Angularjs apps</div>
+      </h2>
+      <!-- </div> -->
     </md-toolbar>
     <div class="text" ng-controller="LoadingController">
 <!-- Overlay Options -->
@@ -72,7 +81,11 @@
   })
         </code></pre>
         </md-card>
-        <md-card>Heres a card dawg, Im gonna explain shit here</md-card>
+        <md-card>
+          <span>
+            ngLoading can be configured a few ways.
+          </span>
+        </md-card>
       </div>
     </div>
   </div>
