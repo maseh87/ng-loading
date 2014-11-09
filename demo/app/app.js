@@ -3,17 +3,7 @@ angular.module('Demo', [
 ])
 
 .config(function(loadingProvider) {
-  // loadingProvider
-    // .load({
-    //   overlay: {
-    //     color: '#000000',
-    //     opacity: '.1',
-    //     display: true
-    //   },
-    //   transitionSpeed: '.3s',
-    //   // icon: 'spinner',
-    //   class: 'spinner'
-    // });
+
 })
 .controller('LoadingController', function($scope, $http, $interval, $document, $mdToast) {
   var body = angular.element($document[0].body);
