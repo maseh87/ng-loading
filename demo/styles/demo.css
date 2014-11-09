@@ -14,3 +14,11 @@ body {
 md-card {
   background-color: white;
 }
+
+md-button .md-button-inner {
+  background: lightgreen;
+}
+
+/*.code {
+  font-weight: bold;;
+}*/
