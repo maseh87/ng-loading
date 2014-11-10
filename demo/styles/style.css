@@ -1,0 +1,26 @@
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.overlay {
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 10000;
+  position: fixed;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+.wrapper {
+  position: absolute;
+  z-index: 11000;
+  opacity: 1;
+  top: 50%;
+  left: 50%;
+}

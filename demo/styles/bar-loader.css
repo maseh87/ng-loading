@@ -1,0 +1,93 @@
+@-webkit-keyframes load-bar-grow {
+  100% {
+    -webkit-transform: scaleX(1.1);
+            transform: scaleX(1.1);
+  }
+}
+@keyframes load-bar-grow {
+  100% {
+    -webkit-transform: scaleX(1.1);
+            transform: scaleX(1.1);
+  }
+}
+@-webkit-keyframes load-bar-background {
+  0% {
+    background-color: #159756;
+  }
+  25% {
+    background-color: #da4733;
+  }
+  50% {
+    background-color: #1d6fee;
+  }
+  75% {
+    background-color: #fdba2c;
+  }
+}
+@keyframes load-bar-background {
+  0% {
+    background-color: #159756;
+  }
+  25% {
+    background-color: #da4733;
+  }
+  50% {
+    background-color: #1d6fee;
+  }
+  75% {
+    background-color: #fdba2c;
+  }
+}
+.load-bar-inbox {
+  -webkit-animation: load-bar-background;
+          animation: load-bar-background;
+  -webkit-animation-delay: 1000ms;
+          animation-delay: 1000ms;
+  -webkit-animation-duration: 4000ms;
+          animation-duration: 4000ms;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: steps(1);
+          animation-timing-function: steps(1);
+  top: 0;
+  height: 10px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 9001;
+  /* Over 9000 */
+}
+.load-bar-inbox::after, .load-bar-inbox::before {
+  -webkit-animation-name: load-bar-grow, load-bar-background;
+          animation-name: load-bar-grow, load-bar-background;
+  -webkit-animation-duration: 1000ms, 4000ms;
+          animation-duration: 1000ms, 4000ms;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in, steps(1);
+          animation-timing-function: ease-in, steps(1);
+  bottom: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
+          transform: scaleX(0);
+  width: 50%;
+}
+.load-bar-inbox::after {
+  right: 0;
+  -webkit-transform-origin: left center;
+      -ms-transform-origin: left center;
+          transform-origin: left center;
+}
+.load-bar-inbox::before {
+  left: 0;
+  -webkit-transform-origin: right center;
+      -ms-transform-origin: right center;
+          transform-origin: right center;
+}
