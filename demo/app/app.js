@@ -23,7 +23,7 @@ angular.module('Demo', [
     config = angular.copy($scope.config);
     $http({
       method: 'GET',
-      url: 'http://www.reddit.com/.json',
+      url: 'https://www.reddit.com/.json',
       // showLoading: false,
       loadingConfig: config
     }).then(function(result) {
