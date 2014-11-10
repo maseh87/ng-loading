@@ -3,25 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "main": "karma.conf.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "expect.js": "^0.3.1",
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.1",
+    "gulp-jshint": "^1.9.0",
+    "gulp-load-plugins": "^0.7.1",
+    "gulp-notify": "^2.0.1",
+    "gulp-shell": "^0.2.10",
+    "gulp-uglify": "^1.0.1",
+    "gulp-watch": "^1.1.0",
     "karma": "^0.12.23",
     "karma-chrome-launcher": "^0.1.4",
-    "karma-mocha": "^0.1.9",
-    "expect.js": "^0.3.1",
-    "karma-mocha-reporter": "^0.3.1",
-    "mocha": "^1.21.4",
-    "gulp": "^3.8.8",
     "karma-coverage": "^0.2.6",
-    "gulp-concat": "^2.4.0",
-    "gulp-load-plugins": "^0.6.0",
-    "gulp-jshint": "^1.8.4",
-    "gulp-uglify": "^1.0.1",
     "karma-firefox-launcher": "^0.1.3",
-    "gulp-shell": "^0.2.9",
-    "gulp-watch": "^1.0.3",
-    "gulp-notify": "^1.6.0"
+    "karma-mocha": "^0.1.9",
+    "karma-mocha-reporter": "^0.3.1",
+    "mocha": "^1.21.4"
   },
   "scripts": {
     "test": "mocha"
