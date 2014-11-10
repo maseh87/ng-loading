@@ -10,8 +10,17 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "coverage",
+    "demo",
+    "specs",
+    "src",
+    ".bowerrc",
+    ".gitignore",
+    "bower.json",
+    "firebase.json",
+    "gulpfile.js",
+    "karma.conf.js",
+    "package.json"
   ],
   "dependencies": {},
   "devDependencies": {
