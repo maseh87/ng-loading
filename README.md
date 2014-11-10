@@ -1,35 +1,39 @@
-angular-c3    [![Build Status](https://travis-ci.org/maseh87/c3-chart.svg?branch=master)](https://travis-ci.org/maseh87/c3-chart)   <img src="http://img.shields.io/badge/Built%20with-Gulp-red.svg" />
+ngLoading    [![Build Status](https://travis-ci.org/maseh87/c3-chart.svg?branch=master)](https://travis-ci.org/maseh87/c3-chart)   <img src="http://img.shields.io/badge/Built%20with-Gulp-red.svg" />
 ===============
 
-### A simple way to add custom C3 charts to your angular apps. Charts based off [C3](http://http://c3js.org/).
+### A simple and automatic way to add custom loading animations to your angular apps.
 
 ## Dependencies
 + Angular.js (1.2+)
-+ C3js
-+ D3js
++ lodash
 
 ## Downloading
-1. The best way to install angular-c3 is to use bower
-    + ```bower install angular-c3 --save```
+1. The best way to install ngLoading is to use bower
+    + ```bower install ng-loading --save```
 2. Or, from this repo
-  + you'll need the main file in ```dist/c3-chart.js```
+  + you'll need the main file in ```dist/```
 
 ## Using
-+ Adding a C3 chart is as simple as adding the c3-chart directive to your HTML. Also add the data attribute to point to the data inside your controller.
-
-```html
-<c3-chart data="data"></c3-chart>
-```
++ Adding a loading animation is as simple as adding the ngLoading dependency to your main angular module. ngLoading will listen to any http request made from your application and show the animation, when your application recieves the http response it will remove the animation.
 
 ```javascript
-angular.module('chartApp', ['angular-c3'])
-.controller('ChartController', function($scope){
-  $scope.data = {
-    columns : [
-      ['data1', 30, 200, 100, 400, 150, 250],
-      ['data2', 50, 20, 10, 40, 15, 25]
-    ]
-  };
+angular.module('myApp', ['ngLoading']);
+```
++ ngLoading can also be customized a few different ways to show your own animations. Configure ngLoading globally by adding a configuration object into the loadingProvider.
+
+```javascript
+angular.module('myApp', ['ngLoading'])
+.config(function(loadingProvider) {
+  loadingProvider
+    .load({
+      transitionSpeed: .3s,
+      class: 'your_css_class', //default is the 'load-bar-inbox' class, another option is the 'spinner' class
+        overlay: {
+          display: true,
+          color: #FEFEFE,
+          opacity: .3
+        }
+    });
 });
 ```
 
