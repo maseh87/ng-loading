@@ -1,0 +1,9 @@
+{
+  "firebase": "ngloading",
+  "public": "demo",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
