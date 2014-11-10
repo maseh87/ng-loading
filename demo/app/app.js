@@ -1,5 +1,6 @@
 angular.module('Demo', [
-  'ng-loading'
+  'ngLoading',
+  'ngMaterial'
 ])
 
 .config(function(loadingProvider) {

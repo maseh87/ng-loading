@@ -4,7 +4,7 @@ var gulp = require('gulp'),
 
 var paths = {
   scripts: ['src/ngLoading.js', 'src/directives/loader-directive.js', 'src/services/*.js', 'src/directives/*.js'],
-  css: ['src/styles/styles.css', 'src/styles/bar-loader.css', 'src/styles/materialSpinner.css']
+  css: ['src/styles/style.css', 'src/styles/bar-loader.css', 'src/styles/materialSpinner.css']
 };
 
 gulp.task('jshint', function() {
