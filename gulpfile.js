@@ -3,8 +3,8 @@ var gulp = require('gulp'),
 
 
 var paths = {
-  scripts: ['src/directives/loader-directive.js', 'src/services/*.js'],
-  css: ['src/styles/bar-loader.css', 'src/styles/materialSpinner.css']
+  scripts: ['src/ngLoading.js', 'src/directives/loader-directive.js', 'src/services/*.js', 'src/directives/*.js'],
+  css: ['src/styles/styles.css', 'src/styles/bar-loader.css', 'src/styles/materialSpinner.css']
 };
 
 gulp.task('jshint', function() {
@@ -18,8 +18,15 @@ gulp.task('css', function() {
   return gulp.src(paths.css)
     .pipe($.concat('ngLoading.css'))
     .pipe(gulp.dest('dist/'))
-    .pipe($.notify({message: 'Finished Concating the CSS'}));
+    .pipe($.notify({message: 'Finished Concating your CSS'}));
+});
+
+gulp.task('js', ['css'], function() {
+  return gulp.src(paths.scripts)
+    .pipe($.concat('ngLoading.js'))
+    .pipe(gulp.dest('dist/'))
+    .pipe($.notify({message: 'Finished Concating your scripts'}));
 });
 
 
-gulp.task('default', ['jshint', 'css']);
+gulp.task('default', ['jshint', 'js']);
