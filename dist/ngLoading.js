@@ -154,12 +154,9 @@ angular.module('directives', [])
 angular.module('compileFactory', [])
 .factory('compileFactory', function($compile, $rootScope, $document, $timeout) {
   //compile the directive to register into the dom
-  var body, div;
-  // var compile = function() {
-    body = angular.element($document[0].body);
-    div = '<loader></loader>';
-    div = $compile(div)($rootScope);
-  // };
+  var body = angular.element($document[0].body);
+  var div = '<loader></loader>';
+  div = $compile(div)($rootScope);
 
 
   var append = function() {
