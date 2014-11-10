@@ -26,15 +26,44 @@ angular.module('myApp', ['ngLoading'])
 .config(function(loadingProvider) {
   loadingProvider
     .load({
-      transitionSpeed: .3s,
+      transitionSpeed: .3s, //default
       class: 'your_css_class', //default is the 'load-bar-inbox' class, another option is the 'spinner' class
         overlay: {
-          display: true,
-          color: #FEFEFE,
-          opacity: .3
+          display: true, //required to apply an overlay
+          color: #FEFEFE, //default
+          opacity: .3 //default
         }
     });
 });
+```
+
++ or configure the loading animation for each individual http request
+
+```javascript
+$http({
+  loadingConfig: {
+    transitionSpeed: '.3s', //default
+    overlay: {
+      display: true, //required to apply an overlay
+      color: #FEFEFE, //default
+      opacity: .3 //default
+    }
+  }
+})
+```
+## Icons
++ Currently ngLoading supports all font-awesome icons with more to come! To add a font-awesome icon just add the icon property to your configuration object.
+
+```javascript
+{
+  transitionSpeed: '.3s', //default
+  icon: 'fa fa-spin fa-spinner fa-5x',
+  overlay: {
+    display: true, //required to apply an overlay
+    color: #FEFEFE, //default
+    opacity: .3 //default
+  }
+}
 ```
 
 ##Contributing
