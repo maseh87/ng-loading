@@ -1,7 +1,6 @@
-angular.module('ng-loading', [
+angular.module('ngLoading', [
   'directives',
-  'services',
-  'ngMaterial'
+  'services'
 ])
 
 .config(function($httpProvider, $provide) {
