@@ -89,7 +89,7 @@ $http({
 5. Make test and check test
 6. Build it, run ```gulp``` and the files will be linted, concatenated, and minified
 7. Push to new branch on your forked repo
-8. Pull request from your branch to angular-c3 master
+8. Pull request from your branch to ngLoading master
 
 ###Format for pull request
 + Pretty standard
