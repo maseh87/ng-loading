@@ -68,6 +68,18 @@ $http({
   }
 }
 ```
+## My app doesn't use http?!
++ ngLoading can also be triggered from anywhere inside your angular app.
+
+```javascript
+.controller('MyController', function(Interceptor) {
+    //trigger the loading screen to start
+    Interceptor.start();
+
+    //trigger it to end
+    Interceptor.end();
+});
+```
 
 ##Contributing
 1. Fork it
