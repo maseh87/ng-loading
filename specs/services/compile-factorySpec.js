@@ -1,6 +1,6 @@
 describe('compile-factory', function() {
   var CompileFactory;
-  beforeEach(module('services'));
+  beforeEach(module('compileFactory'));
 
   beforeEach(inject(function(compileFactory) {
     CompileFactory = compileFactory;

@@ -15,10 +15,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/lib/angular/angular.js',
-      'src/lib/lodash/dist/lodash.js',
+      'demo/lib/angular/angular.js',
+      'demo/lib/lodash/dist/lodash.js',
       'node_modules/expect.js/index.js',
-      'src/lib/angular-mocks/angular-mocks.js',
+      'demo/lib/angular-mocks/angular-mocks.js',
       'src/**/*.js',
       'specs/**/*.js'
     ],

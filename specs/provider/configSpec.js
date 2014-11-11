@@ -9,7 +9,7 @@ describe('configOptions', function() {
         provider = loadingProvider;
       });
       //initailize the modules for testing
-      module('ng-loading', 'test-app');
+      module('ngLoading', 'test-app');
       //make the injectors register again
       inject(function(){});
   });

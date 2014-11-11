@@ -1,6 +1,6 @@
 describe('load-directive', function() {
   var $scope, element, isolate;
-  beforeEach(module('ng-loading'));
+  beforeEach(module('ngLoading'));
   beforeEach(inject(function($rootScope, $compile) {
     $scope = $rootScope.$new();
     element = '<loader></loader>';

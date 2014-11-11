@@ -4,12 +4,12 @@ describe('loadingProvider', function() {
 
   beforeEach(function() {
     //create a test module to inject the loading provider into
-    angular.module('test-app', ['ng-loading'])
+    angular.module('test-app', ['ngLoading'])
       .config(function(loadingProvider) {
         provider = loadingProvider;
       });
       //initailize the modules for testing
-      module('ng-loading', 'test-app');
+      module('ngLoading', 'test-app');
       //make the injectors register again
       inject(function(){});
   });
