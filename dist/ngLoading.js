@@ -144,9 +144,6 @@ angular.module('directives', [])
       }
     }
   };
-
-
-
   //return the directive object
   return directive;
 }]);
