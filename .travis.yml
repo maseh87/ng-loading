@@ -1,0 +1,11 @@
+language: node_js
+before_install:
+- npm install -g karma-cli
+- npm install -g mocha
+- npm install -g gulp
+- npm install -g bower
+- npm install -g karma
+before_script:
+- bower install angular lodash angular-mocks
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
