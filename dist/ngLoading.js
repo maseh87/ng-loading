@@ -153,6 +153,7 @@ angular.module('directives', [])
 
 angular.module('compileFactory', [])
 .factory('compileFactory', function($compile, $rootScope, $document, $timeout) {
+
   //compile the directive to register into the dom
   var body = angular.element($document[0].body);
   var div = '<loader></loader>';
@@ -194,6 +195,18 @@ angular.module('interceptor', [])
   var defer = $q.defer();
   var overlay, loadConfig;
   return {
+    start: function() {
+      $injector.invoke(function(compileFactory) {
+        compileFactory.append();
+        compileFactory.fadeIn();
+        // defer.resolve(config);
+      });
+    },
+    end: function() {
+      $injector.invoke(function(compileFactory) {
+        compileFactory.remove();
+      });
+    },
     request: function(config) {
       //disable loading screen for a per request basis
       if(config.showLoading === false) return config;

@@ -6,7 +6,7 @@ angular.module('Demo', [
 .config(function(loadingProvider) {
 
 })
-.controller('LoadingController', function($scope, $http, $interval, $document, $mdToast) {
+.controller('LoadingController', function($scope, $http, $timeout, $document, $mdToast, Interceptor) {
   var body = angular.element($document[0].body);
   var config = {};
   // $scope.showLoading = true;
@@ -30,6 +30,18 @@ angular.module('Demo', [
     }).then(function(result) {
       // console.log(result.data);
     });
+  };
+
+  $scope.start = function() {
+    console.log('start', Interceptor);
+    Interceptor.start();
+
+    $timeout(function() {
+      Interceptor.end();
+    }, 3000);
+  };
+
+  $scope.end = function() {
   };
 
 });
