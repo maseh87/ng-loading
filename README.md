@@ -1,4 +1,4 @@
-ngLoading    [![Build Status](https://travis-ci.org/maseh87/c3-chart.svg?branch=master)](https://travis-ci.org/maseh87/c3-chart)   <img src="http://img.shields.io/badge/Built%20with-Gulp-red.svg" />
+ngLoading    [![Build Status](https://travis-ci.org/maseh87/ng-loading.svg?branch=master)](https://travis-ci.org/maseh87/ng-loading)   <img src="http://img.shields.io/badge/Built%20with-Gulp-red.svg" />
 ===============
 
 ### A simple and automatic way to add custom loading animations to your angular apps.
@@ -80,10 +80,10 @@ $http({
 + Pretty standard
   + in your commit message; ```(type) message [issue # closed]```
     + ```(bug) killed that bug, closes #45```
-+ Submit issues as you see them. There are probably better, faster, easier ways to achieve what angular-c3 is designed to do so.
++ Submit issues as you see them. There are probably better, faster, easier ways to achieve what ngLoading is designed to do so.
 
 ###Testing
-+ angular-c3 uses Karma + Mocha + Travis for unit and ci
++ ngLoading uses Karma + Mocha + Travis for unit and ci
 + Make sure you didn't break anything
   + run ```karma start``` to test in Chrome with karma
 + Features will not be accepted without specs created for them
