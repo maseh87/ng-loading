@@ -7,9 +7,9 @@ angular.module('compileFactory', [])
   div = $compile(div)($rootScope);
 
   var append = function() {
-    body = angular.element($document[0].body);
-    div = '<loader></loader>';
-    div = $compile(div)($rootScope);
+    // body = angular.element($document[0].body);
+    // div = '<loader></loader>';
+    // div = $compile(div)($rootScope);
     body.append(div);
   };
 
