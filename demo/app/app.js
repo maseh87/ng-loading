@@ -2,7 +2,6 @@ angular.module('Demo', [
   'ngLoading',
   'ngMaterial'
 ])
-
 .config(function(loadingProvider) {
 
 })
