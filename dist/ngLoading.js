@@ -4,7 +4,7 @@ angular.module('ngLoading', [
   'interceptor'
 ])
 
-.config(function($httpProvider, $provide) {
+.config(['$httpProvider', '$provide', function($httpProvider, $provide) {
   //Loading Provider Used to add options to ng-loading
   $provide.provider('loading', function() {
     //service object available to the injector
@@ -102,11 +102,11 @@ angular.module('ngLoading', [
 
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
-});
+}]);
 angular.module('directives', [])
 
 //directive to be attached to the DOM
-.directive('loader', function(loading, $compile) {
+.directive('loader', ['loading', '$compile', function(loading, $compile) {
   //check if its a font awesome icon
   var checkClass;
 
@@ -149,10 +149,10 @@ angular.module('directives', [])
 
   //return the directive object
   return directive;
-});
+}]);
 
 angular.module('compileFactory', [])
-.factory('compileFactory', function($compile, $rootScope, $document, $timeout) {
+.factory('compileFactory', ['$compile', '$rootScope', '$document', '$timeout', function($compile, $rootScope, $document, $timeout) {
 
   //compile the directive to register into the dom
   var body = angular.element($document[0].body);
@@ -189,9 +189,9 @@ angular.module('compileFactory', [])
     fadeIn: fadeIn,
     remove: remove
   };
-});
+}]);
 angular.module('interceptor', [])
-.factory('Interceptor', function($document, $injector, $q, loading, $log) {
+.factory('Interceptor', ['$document', '$injector', '$q', 'loading', '$log', function($document, $injector, $q, loading, $log) {
   var defer = $q.defer();
   var overlay, loadConfig;
   return {
@@ -234,4 +234,4 @@ angular.module('interceptor', [])
       return response;
     }
   };
-});
+}]);

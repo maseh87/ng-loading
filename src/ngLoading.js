@@ -4,7 +4,7 @@ angular.module('ngLoading', [
   'interceptor'
 ])
 
-.config(function($httpProvider, $provide) {
+.config(['$httpProvider', '$provide', function($httpProvider, $provide) {
   //Loading Provider Used to add options to ng-loading
   $provide.provider('loading', function() {
     //service object available to the injector
@@ -102,4 +102,4 @@ angular.module('ngLoading', [
 
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
-});
+}]);

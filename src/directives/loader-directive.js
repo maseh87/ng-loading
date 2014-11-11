@@ -1,7 +1,7 @@
 angular.module('directives', [])
 
 //directive to be attached to the DOM
-.directive('loader', function(loading, $compile) {
+.directive('loader', ['loading', '$compile', function(loading, $compile) {
   //check if its a font awesome icon
   var checkClass;
 
@@ -44,4 +44,4 @@ angular.module('directives', [])
 
   //return the directive object
   return directive;
-});
+}]);

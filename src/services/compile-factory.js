@@ -1,5 +1,5 @@
 angular.module('compileFactory', [])
-.factory('compileFactory', function($compile, $rootScope, $document, $timeout) {
+.factory('compileFactory', ['$compile', '$rootScope', '$document', '$timeout', function($compile, $rootScope, $document, $timeout) {
 
   //compile the directive to register into the dom
   var body = angular.element($document[0].body);
@@ -36,4 +36,4 @@ angular.module('compileFactory', [])
     fadeIn: fadeIn,
     remove: remove
   };
-});
+}]);

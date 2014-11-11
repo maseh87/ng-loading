@@ -1,5 +1,5 @@
 angular.module('interceptor', [])
-.factory('Interceptor', function($document, $injector, $q, loading, $log) {
+.factory('Interceptor', ['$document', '$injector', '$q', 'loading', '$log', function($document, $injector, $q, loading, $log) {
   var defer = $q.defer();
   var overlay, loadConfig;
   return {
@@ -42,4 +42,4 @@ angular.module('interceptor', [])
       return response;
     }
   };
-});
+}]);
