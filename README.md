@@ -4,7 +4,7 @@ ngLoading    [![Build Status](https://travis-ci.org/maseh87/ng-loading.svg?branc
 ### A simple and automatic way to add custom loading animations to your angular apps.
 
 ## Demo Site
-Preview ngLoading in actions [here](https://ngloading.firebaseapp.com).
+Preview ngLoading in action [here](https://ngloading.firebaseapp.com).
 
 ## Dependencies
 + Angular.js (1.2+)
