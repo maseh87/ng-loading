@@ -3,6 +3,18 @@ angular.module('interceptor', [])
   var defer = $q.defer();
   var overlay, loadConfig;
   return {
+    start: function() {
+      $injector.invoke(function(compileFactory) {
+        compileFactory.append();
+        compileFactory.fadeIn();
+        // defer.resolve(config);
+      });
+    },
+    end: function() {
+      $injector.invoke(function(compileFactory) {
+        compileFactory.remove();
+      });
+    },
     request: function(config) {
       //disable loading screen for a per request basis
       if(config.showLoading === false) return config;
