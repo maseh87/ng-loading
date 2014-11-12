@@ -55,7 +55,7 @@ $http({
 })
 ```
 ## Icons
-+ Currently ngLoading supports all font-awesome icons with more to come! To add a font-awesome icon just add the icon property to your configuration object.
++ Currently ngLoading supports all 3rd party icons. To add an icon just add the icon property to your configuration object.
 
 ```javascript
 {
