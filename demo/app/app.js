@@ -29,18 +29,10 @@ angular.module('Demo', [
     }).then(function(result) {
       // console.log(result.data);
     });
-  };
-
-  $scope.start = function() {
-    console.log('start', Interceptor);
-    Interceptor.start();
-
-    $timeout(function() {
-      Interceptor.end();
-    }, 3000);
-  };
-
-  $scope.end = function() {
+    // Interceptor.start();
+    // $timeout(function(){
+    //   Interceptor.end();
+    // }, 3000);
   };
 
 });
