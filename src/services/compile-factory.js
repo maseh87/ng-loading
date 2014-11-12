@@ -1,4 +1,4 @@
-angular.module('compileFactory', [])
+angular.module('ngLoading.compileFactory', [])
 .factory('compileFactory', ['$compile', '$rootScope', '$document', '$timeout', function($compile, $rootScope, $document, $timeout) {
 
   //compile the directive to register into the dom

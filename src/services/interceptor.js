@@ -1,4 +1,4 @@
-angular.module('interceptor', [])
+angular.module('ngLoading.interceptor', [])
 .factory('Interceptor', ['$document', '$injector', '$q', 'loading', '$log', function($document, $injector, $q, loading, $log) {
   var defer = $q.defer();
   var overlay, loadConfig;

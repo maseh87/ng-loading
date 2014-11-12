@@ -1,7 +1,7 @@
 angular.module('ngLoading', [
-  'directives',
-  'compileFactory',
-  'interceptor'
+  'ngLoading.directives',
+  'ngLoading.compileFactory',
+  'ngLoading.interceptor'
 ])
 
 .config(['$httpProvider', '$provide', function($httpProvider, $provide) {

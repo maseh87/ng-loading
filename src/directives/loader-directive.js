@@ -1,4 +1,4 @@
-angular.module('directives', [])
+angular.module('ngLoading.directives', [])
 
 //directive to be attached to the DOM
 .directive('loader', ['loading', '$compile', function(loading, $compile) {
@@ -21,7 +21,7 @@ angular.module('directives', [])
       }
       checkClass = loading.config.icon.slice(0, 2);
 
-      if(checkClass === 'fa') {
+      if(loading.config.icon) {
         return '<div class="' + loading.config.overlay.display + ' fade-out">' + '<div class="wrapper">' + '<i class="' + loading.config.icon +  '"></i></div>' + '</div>'
       }
 
