@@ -1,6 +1,6 @@
 describe('interceptor-factory', function() {
   var interceptor;
-  beforeEach(module('ngLoading','interceptor'));
+  beforeEach(module('ngLoading','ngLoading.interceptor'));
 
   beforeEach(inject(function(Interceptor) {
     interceptor = Interceptor;

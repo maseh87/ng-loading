@@ -1,7 +1,7 @@
 angular.module('ngLoading', [
-  'directives',
-  'compileFactory',
-  'interceptor'
+  'ngLoading.directives',
+  'ngLoading.compileFactory',
+  'ngLoading.interceptor'
 ])
 
 .config(['$httpProvider', '$provide', function($httpProvider, $provide) {
@@ -103,7 +103,7 @@ angular.module('ngLoading', [
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
 }]);
-angular.module('directives', [])
+angular.module('ngLoading.directives', [])
 
 //directive to be attached to the DOM
 .directive('loader', ['loading', '$compile', function(loading, $compile) {
@@ -126,7 +126,7 @@ angular.module('directives', [])
       }
       checkClass = loading.config.icon.slice(0, 2);
 
-      if(checkClass === 'fa') {
+      if(loading.config.icon) {
         return '<div class="' + loading.config.overlay.display + ' fade-out">' + '<div class="wrapper">' + '<i class="' + loading.config.icon +  '"></i></div>' + '</div>'
       }
 
@@ -148,7 +148,7 @@ angular.module('directives', [])
   return directive;
 }]);
 
-angular.module('compileFactory', [])
+angular.module('ngLoading.compileFactory', [])
 .factory('compileFactory', ['$compile', '$rootScope', '$document', '$timeout', function($compile, $rootScope, $document, $timeout) {
 
   //compile the directive to register into the dom
@@ -156,11 +156,10 @@ angular.module('compileFactory', [])
   var div = '<loader></loader>';
   div = $compile(div)($rootScope);
 
-
   var append = function() {
-    body = angular.element($document[0].body);
-    div = '<loader></loader>';
-    div = $compile(div)($rootScope);
+    // body = angular.element($document[0].body);
+    // div = '<loader></loader>';
+    // div = $compile(div)($rootScope);
     body.append(div);
   };
 
@@ -187,7 +186,7 @@ angular.module('compileFactory', [])
     remove: remove
   };
 }]);
-angular.module('interceptor', [])
+angular.module('ngLoading.interceptor', [])
 .factory('Interceptor', ['$document', '$injector', '$q', 'loading', '$log', function($document, $injector, $q, loading, $log) {
   var defer = $q.defer();
   var overlay, loadConfig;

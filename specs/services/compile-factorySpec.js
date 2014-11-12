@@ -1,6 +1,6 @@
 describe('compile-factory', function() {
   var CompileFactory;
-  beforeEach(module('compileFactory'));
+  beforeEach(module('ngLoading.compileFactory'));
 
   beforeEach(inject(function(compileFactory) {
     CompileFactory = compileFactory;
