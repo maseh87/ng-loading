@@ -12,19 +12,16 @@ describe('loadingProvider', function() {
       module('ngLoading', 'test-app');
       //make the injectors register again
       inject(function(){});
+
+      config = provider.$get();
   });
 
   it('should exist', function() {
-    config = provider.$get();
     expect(provider).to.not.be(null);
   });
 
   it('should have a load method', function() {
       expect(provider.load).to.be.a('function');
-  });
-
-  it('should return a config object', function() {
-    // expect(provider.load).to.be.an('object');
   });
 
   it('should return an object', function() {
