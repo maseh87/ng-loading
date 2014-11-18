@@ -64,13 +64,13 @@
   .config(function(loadingProvider) {
     loadingProvider
       .load({
-        transitionSpeed: {{ config.transitionSpeed }},
-        class: {{ config.class }},
-        icon: {{ config.icon }},
+        transitionSpeed: "{{ config.transitionSpeed }}",
+        class: "{{ config.class }}",
+        icon: "{{ config.icon }}",
         overlay: {
           display: {{ config.overlay.display }},
-          color: {{ config.overlay.color }},
-          opacity: {{ config.overlay.opacity }}
+          color: "{{ config.overlay.color }}",
+          opacity: "{{ config.overlay.opacity }}"
         }
       })
   });
@@ -83,18 +83,19 @@
           <pre><code class="language-">
   For each individual http request
 
-  $http({
+  $http.get("/api/data", {
     loadingConfig: {
-      transitionSpeed: {{ config.transitionSpeed }},
-      class: {{ config.class }},
-      icon: {{ config.icon }},
+      transitionSpeed: "{{ config.transitionSpeed }}",
+      class: "{{ config.class }}",
+      icon: "{{ config.icon }}",
       overlay: {
         display: {{ config.overlay.display }},
-        color: {{ config.overlay.color }},
-        opacity: {{ config.overlay.opacity }}
+        color: "{{ config.overlay.color }}",
+        opacity: "{{ config.overlay.opacity }}"
       }
     }
-  }).then(function(result) {
+  })
+  .then(function(result) {
     //do something
   });
         </code></pre>
