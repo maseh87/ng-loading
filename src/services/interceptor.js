@@ -1,6 +1,5 @@
 angular.module('ngLoading.interceptor', [])
 .factory('Interceptor', ['$document', '$injector', '$q', 'loading', '$log', function($document, $injector, $q, loading, $log) {
-  var defer = $q.defer();
   var overlay, loadConfig;
   return {
     start: function() {
@@ -16,6 +15,8 @@ angular.module('ngLoading.interceptor', [])
       });
     },
     request: function(config) {
+      var defer = $q.defer();
+
       //disable loading screen for a per request basis
       if(config.showLoading === false) return config;
 
