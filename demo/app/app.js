@@ -2,8 +2,8 @@ angular.module('Demo', [
   'ngLoading',
   'ngMaterial'
 ])
-.config(function(loadingProvider) {
-
+.config(function(loadingProvider, $httpProvider) {
+  console.log($httpProvider, 'responseInterceptors');
 })
 .controller('LoadingController', function($scope, $http, $timeout, $document, $mdToast, Interceptor) {
   var body = angular.element($document[0].body);
