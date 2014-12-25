@@ -17,7 +17,7 @@ Preview ngLoading in action [here](https://ngloading.firebaseapp.com).
   + you'll need the main file in ```dist/```
 
 ## Using
-+ Adding a loading animation is as simple as adding the ngLoading dependency to your main angular module. ngLoading will listen to any http request made from your application and show the animation, when your application recieves the http response it will remove the animation.
++ Adding a loading animation is as simple as adding the ngLoading dependency to your main angular module. ngLoading will listen to any http request made from your application and show the animation. Then, when your application recieves the http response, it will remove the animation.
 
 ```javascript
 angular.module('myApp', ['ngLoading']);
@@ -55,7 +55,7 @@ $http({
 })
 ```
 ## Icons
-+ Currently ngLoading supports all 3rd party icons. To add an icon just add the icon property to your configuration object.
++ Currently ngLoading supports all 3rd party icons. To add an icon, just add the icon property to your configuration object.
 
 ```javascript
 {
