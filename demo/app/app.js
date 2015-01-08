@@ -1,11 +1,10 @@
 angular.module('Demo', [
-  'ngLoading',
-  'ngMaterial'
+  'ngLoading'
 ])
 .config(function(loadingProvider, $httpProvider) {
   console.log($httpProvider, 'responseInterceptors');
 })
-.controller('LoadingController', function($scope, $http, $timeout, $document, $mdToast, Interceptor) {
+.controller('LoadingController', function($scope, $http, $timeout, $document, Interceptor) {
   var body = angular.element($document[0].body);
   var config = {};
   // $scope.showLoading = true;

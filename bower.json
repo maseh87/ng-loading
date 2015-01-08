@@ -24,7 +24,8 @@
   ],
   "dependencies": {
     "lodash": "~2.4.1",
-    "angular-material": "~0.5.1"
+    "angular-material": "~0.5.1",
+    "lumx": "~0.2.47"
   },
   "devDependencies": {
     "angular": "1.3.2",

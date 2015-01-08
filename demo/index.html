@@ -2,112 +2,27 @@
 <html>
 <head>
   <title>ng-Loading</title>
-  <link rel="stylesheet" type="text/css" href="./styles/prism.css">
-  <link rel="stylesheet" type="text/css" href="./lib/octicons/octicons.css">
+  <!-- <link rel="stylesheet" type="text/css" href="./styles/prism.css"> -->
   <link rel="stylesheet" type="text/css" href="./styles/ngLoading.css">
-  <link rel="stylesheet" type="text/css" href="./lib/angular-material/angular-material.css">
-  <link rel="stylesheet" type="text/css" href="./lib/angular-material/themes/purple-theme.css">
-  <link rel="stylesheet" type="text/css" href="./lib/angular-material/themes/amber-theme.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles/demo.css">
 
-  <script src="./prism.js"></script>
+  <!-- // <script src="./prism.js"></script> -->
   <script src="./lib/lodash/dist/lodash.js"></script>
   <script src="./lib/angular/angular.js"></script>
-  <script src="./lib/hammerjs/hammer.js"></script>
-  <script src="./lib/angular-aria/angular-aria.js"></script>
-  <script src="./lib/angular-animate/angular-animate.js"></script>
-  <script src="./lib/angular-material/angular-material.js"></script>
+  
 
   <script src="./app/ngLoading.js"></script>
   <script src="./app/app.js"></script>
 </head>
 <body>
   <div ng-app="Demo">
-    <md-toolbar md-theme="purple" class="md-medium-tall md-whiteframe-z2 header">
-      <div class="md-toolbar-tools md-toolbar-tools-top">
-        <md-icon style="width: 24px; height: 24px;">
-          <svg-icon></svg-icon>
-        </md-icon>
-      </div>
-      <h2 class="md-toolbar-tools" layout-arrange="center center">
-        <a href="https://github.com/maseh87/ng-loading  "><span class="mega-octicon octicon-mark-github"></span></a>
-        <span>ngLoading</span>
-      </h2>
-      <span flex></span>
-      <h2 class="md-toolbar-tools">
-        <div style="font-size: 18px">Beautiful, automatic loading screens for your Angularjs apps</div>
-      </h2>
-    </md-toolbar>
+   
     <div class="text" ng-controller="LoadingController">
-<!-- Overlay Options -->
-      <div layout="horizontal">
-        <form style="padding: 20px;">
-          <div class="row">
-            <md-text-float label="transitionSpeed" ng-model="config.transitionSpeed"></md-text-float>
-            <md-text-float label="class" ng-model="config.class" type="text"></md-text-float>
-            <md-text-float label="icon" ng-model="config.icon" type="text"></md-text-float>
-            <md-text-float label="color" ng-model="config.overlay.color" id="color"></md-text-float>
-            <md-text-float label="opacity" ng-model="config.overlay.opacity" type="text"></md-text-float>
-          </div>
-        <div><br>
-          <md-button class="md-fab" ng-click="test()">
-            <img src='./lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
-          </md-button>
-        </div>
-        </form>
-        <md-card>
-        <pre><code class="language-">
-  You can configure ngLoading globally
-
-  angular.module('myApp', ['ngLoading'])
-  .config(function(loadingProvider) {
-    loadingProvider
-      .load({
-        transitionSpeed: "{{ config.transitionSpeed }}",
-        class: "{{ config.class }}",
-        icon: "{{ config.icon }}",
-        overlay: {
-          display: {{ config.overlay.display }},
-          color: "{{ config.overlay.color }}",
-          opacity: "{{ config.overlay.opacity }}"
-        }
-      })
-  });
-        </code></pre>
-        </md-card>
-        <md-button class="md-raised md-primary topButton">
-          OR
-        </md-button>
-        <md-card>
-          <pre><code class="language-">
-  For each individual http request
-
-  $http.get("/api/data", {
-    loadingConfig: {
-      transitionSpeed: "{{ config.transitionSpeed }}",
-      class: "{{ config.class }}",
-      icon: "{{ config.icon }}",
-      overlay: {
-        display: {{ config.overlay.display }},
-        color: "{{ config.overlay.color }}",
-        opacity: "{{ config.overlay.opacity }}"
-      }
-    }
-  })
-  .then(function(result) {
-    //do something
-  });
-        </code></pre>
-        </md-card>
-    <!-- <md-button class="md-fab" ng-click="start()">
-      <img src='./lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
-    </md-button>
-    <md-button class="md-fab" ng-click="end()">
-      <img src='./lib/material-design-icons/action/svg/ic_thumb_down_24px.svg'>
-    </md-button> -->
-      </div>
+      
+ 
     </div>
+
   </div>
 
   <script>
@@ -118,7 +33,6 @@
 
     ga('create', 'UA-44212105-3', 'auto');
     ga('send', 'pageview');
-
   </script>
 </body>
 </html>
