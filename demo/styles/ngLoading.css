@@ -78,17 +78,17 @@
       -ms-transform: scaleX(0);
           transform: scaleX(0);
   width: 50%;
-  z-index: 9001;
+  /*z-index: 9001;*/
 }
 .load-bar-inbox::after {
-  z-index: 9001;
+  /*z-index: 9001;*/
   right: 0;
   -webkit-transform-origin: left center;
       -ms-transform-origin: left center;
           transform-origin: left center;
 }
 .load-bar-inbox::before {
-  z-index: 9001;
+  /*z-index: 9001;*/
   left: 0;
   -webkit-transform-origin: right center;
       -ms-transform-origin: right center;
@@ -843,10 +843,6 @@ keyframes color-shift {
     -webkit-transform: rotate(450deg);
           transform: rotate(450deg);
   }
-}
-
-body {
-  z-index: 1;
 }
 
 .fade-in {

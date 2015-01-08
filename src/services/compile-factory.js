@@ -10,11 +10,11 @@ angular.module('ngLoading.compileFactory', [])
     // body = angular.element($document[0].body);
     // div = '<loader></loader>';
     // div = $compile(div)($rootScope);
-    // body.append(div);
-    body.addClass('load-bar-inbox');
+    body.append(div);
+    div.addClass('load-bar-inbox');
     $timeout(function() {
-      body.addClass('fade-in');
-      // body.removeClass('fade-out');
+      div.removeClass('fade-out');
+      div.addClass('fade-in');
     }, 600);
   };
 
@@ -30,7 +30,7 @@ angular.module('ngLoading.compileFactory', [])
       div.addClass('fade-out');
     }, 3000).then(function() {
       $timeout(function() {
-        div.remove();
+        div.removeClass('load-bar-inbox');
       },700);
     });
   };
