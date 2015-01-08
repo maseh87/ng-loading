@@ -5,11 +5,8 @@ angular.module('ngLoading.compileFactory', [])
   var body = angular.element($document[0].body);
   var div = '<loader></loader>';
   div = $compile(div)($rootScope);
-
+  // Append the directive to the body and fade-in
   var append = function() {
-    // body = angular.element($document[0].body);
-    // div = '<loader></loader>';
-    // div = $compile(div)($rootScope);
     body.append(div);
     div.addClass('load-bar-inbox');
     $timeout(function() {
@@ -18,13 +15,14 @@ angular.module('ngLoading.compileFactory', [])
     }, 200);
   };
 
-  var fadeIn = function() {
-    $timeout(function() {
-      div.removeClass('fade-out');
-      div.addClass('fade-in');
-    }, 200);
-  };
-
+  // var fadeIn = function() {
+  //   $timeout(function() {
+  //     div.removeClass('fade-out');
+  //     div.addClass('fade-in');
+  //   }, 200);
+  // };
+  
+  // Remove div from the DOM and fade-out
   var remove = function() {
     $timeout(function() {
       div.addClass('fade-out');
@@ -37,7 +35,7 @@ angular.module('ngLoading.compileFactory', [])
 
   return {
     append: append,
-    fadeIn: fadeIn,
     remove: remove
+    // fadeIn: fadeIn,
   };
 }]);
