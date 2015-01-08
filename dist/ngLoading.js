@@ -100,6 +100,7 @@ angular.module('ngLoading', [
     return loadService;
   });
 
+
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
 }]);
