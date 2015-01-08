@@ -2,6 +2,7 @@ angular.module('ngLoading.interceptor', [])
 .factory('Interceptor', ['$document', '$injector', '$q', 'loading', '$log', function($document, $injector, $q, loading, $log) {
   var overlay, loadConfig;
   return {
+    // Start the animation manually
     start: function() {
       $injector.invoke(function(compileFactory) {
         compileFactory.append();
@@ -9,11 +10,13 @@ angular.module('ngLoading.interceptor', [])
         // defer.resolve(config);
       });
     },
+    // End the animation manually
     end: function() {
       $injector.invoke(function(compileFactory) {
         compileFactory.remove();
       });
     },
+    // Each request made
     request: function(config) {
       var defer = $q.defer();
 
@@ -36,6 +39,7 @@ angular.module('ngLoading.interceptor', [])
       });
       return defer.promise;
     },
+    // Each response recieved
     response: function(response) {
       $injector.invoke(function(compileFactory) {
         compileFactory.remove();
