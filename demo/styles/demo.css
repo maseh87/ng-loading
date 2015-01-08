@@ -1,26 +1,16 @@
-.header {
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.text {
-  padding-left: 90px;
-  padding-right: 90px;
-}
-
 body {
   background-color: #EFEFEF;
 }
 
-md-card {
-  background-color: white;
+.header {
+  z-index: 999;
+  height: 70px;
+  padding: 12px;
+  background-color: #7B1FA2;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+
 }
 
-md-button .md-button-inner {
-  /*background: lightgreen;*/
-}
-
-.topButton {
-  position: absolute;
-  margin-top: 20%;
-  margin-left: -1.3%;
+.main-logo {
+  color: white;
 }

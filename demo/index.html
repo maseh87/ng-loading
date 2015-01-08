@@ -14,8 +14,9 @@
   <script src="./lib/jquery/dist/jquery.js"></script>
   <script src="./lib/velocity/velocity.js"></script>
   <script src="./lib/moment/min/moment-with-locales.min.js"></script>
-  <script src="./lib/lodash/dist/lodash.js"></script>
   <script src="./lib/angular/angular.js"></script>
+  <script src="./lib/lodash/dist/lodash.js"></script>
+  <script src="./lib/lumx/dist/js/lumx.js"></script>
   
 
   <script src="./app/ngLoading.js"></script>
@@ -23,9 +24,30 @@
 </head>
 <body>
   <div ng-app="Demo">
-   
-    <div class="text" ng-controller="LoadingController">
-      
+
+    <!-- ToolBar -->
+    <header class="header">
+      <div class="toolbar__left mr">
+        <button class="btn btn--l btn--black btn--icon" lx-ripple>
+          <i class="mdi mdi--menu"></i>
+        </button>
+      </div>
+      <span class="main-logo fs-display-1"> ng-Loading </span>
+    </header>
+
+    <!-- Main Content -->
+    <div ng-controller="LoadingController">
+      <div class="card">
+        <!-- Card Header -->
+        <div class="card__top">
+          <strong class="card-title">Global Configuration</strong>
+        </div>
+        <!-- Card Content -->
+        <div class="card__content">
+          <span class="card-subtitle">In the config block</span>
+          <div class="paragraph">This is the paragraph</div>
+        </div>
+      </div>
  
     </div>
 
