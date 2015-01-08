@@ -21,15 +21,19 @@ angular.module('ngLoading.interceptor', [])
       var defer = $q.defer();
 
       //disable loading screen for a per request basis
-      if(config.showLoading === false) return config;
+      // if(config.showLoading === false) return config;
 
-      if(config.loadingConfig) {
-        loadConfig = _.extend(loading.config, loading.verify(config.loadingConfig));
-        if(config.loadingConfig.overlay.display === true){
-          overlay = _.extend(loading.config.overlay, loading.verify(config.loadingConfig.overlay, 'overlay'));
-        }
-        loading.config = loadConfig;
-        loading.config.overlay = overlay;
+      // if(config.loadingConfig) {
+      //   loadConfig = _.extend(loading.config, loading.verify(config.loadingConfig));
+      //   if(config.loadingConfig.overlay.display === true){
+      //     overlay = _.extend(loading.config.overlay, loading.verify(config.loadingConfig.overlay, 'overlay'));
+      //   }
+      //   loading.config = loadConfig;
+      //   loading.config.overlay = overlay;
+      // }
+
+      if(config.showLoader) {
+        console.log('Gotcha'); 
       }
 
       $injector.invoke(function(compileFactory) {

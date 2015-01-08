@@ -103,4 +103,5 @@ angular.module('ngLoading', [
 
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
+  
 }]);

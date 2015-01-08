@@ -24,7 +24,7 @@ angular.module('Demo', [
     $http({
       method: 'GET',
       url: 'https://www.reddit.com/.json',
-      // showLoading: false,
+      showLoader: true,
       loadingConfig: config
     }).then(function(result) {
       // console.log(result.data);
