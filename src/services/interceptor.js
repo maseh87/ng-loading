@@ -6,7 +6,6 @@ angular.module('ngLoading.interceptor', [])
     start: function() {
       $injector.invoke(function(compileFactory) {
         compileFactory.append();
-        compileFactory.fadeIn();
       });
     },
     // End the animation manually
@@ -18,28 +17,12 @@ angular.module('ngLoading.interceptor', [])
     // Each request made
     request: function(config) {
       var defer = $q.defer();
-      
-      //disable loading screen for a per request basis
-      // if(config.showLoading === false) return config;
-
-      // if(config.loadingConfig) {
-      //   loadConfig = _.extend(loading.config, loading.verify(config.loadingConfig));
-      //   if(config.loadingConfig.overlay.display === true){
-      //     overlay = _.extend(loading.config.overlay, loading.verify(config.loadingConfig.overlay, 'overlay'));
-      //   }
-      //   loading.config = loadConfig;
-      //   loading.config.overlay = overlay;
-      // }
-
-      if(config.showLoader) {
-        console.log('Gotcha'); 
+      if(config.showLoader) { 
         $injector.invoke(function(compileFactory) {
           compileFactory.append();
-          // compileFactory.fadeIn();
           defer.resolve(config);
         });
       }
-
       return defer.promise;
     },
     // Each response recieved
