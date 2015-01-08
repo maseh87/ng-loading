@@ -37,6 +37,8 @@
 
     <!-- Main Content -->
     <div ng-controller="LoadingController">
+      <div class="grid">
+        
       <div class="card">
         <!-- Card Header -->
         <div class="card__top">
@@ -44,9 +46,40 @@
         </div>
         <!-- Card Content -->
         <div class="card__content">
-          <span class="card-subtitle">In the config block</span>
-          <div class="paragraph">This is the paragraph</div>
+          <span class="card-subtitle">Add configuration options inside the config block of your angular application</span>
+          <div class="grid">
+            <div class="grid__col4">
+            <!-- Opacity -->
+              <lx-text-field label="Opacity">
+                <input type="number" ng-model="opacity">
+              </lx-text-field>
+            <!-- Transition Speed -->
+              <lx-text-field label="Transition Speed">
+                <input type="number" ng-model="transitionSpeed">
+              </lx-text-field>
+              
+            <!-- Colors -->
+              <lx-select placeholder="Color" choices="colors">
+                <lx-select-selected> {{ $selected.color }} </lx-select-selected>
+                <lx-select-choices> {{ $choice.color }} </lx-select-choices>
+              </lx-select>
+
+            <!-- Class -->
+              <lx-select placeholder="Class" choices="classes">
+                <lx-select-selected> {{ $selected.class }}</lx-select-selected>
+                <lx-select-choices> {{ $choice.class }}</lx-select-choices>
+              </lx-select>
+
+            <!-- Icon -->
+              <lx-select placeholder="Icon">
+
+              </lx-select>
+
+
+            </div>
+          </div>
         </div>
+      </div>
       </div>
  
     </div>

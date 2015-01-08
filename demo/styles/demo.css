@@ -14,3 +14,7 @@ body {
 .main-logo {
   color: white;
 }
+
+.grid {
+  padding-top: 10px;
+}
