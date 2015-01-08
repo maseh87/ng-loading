@@ -102,6 +102,7 @@ angular.module('ngLoading', [
 
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
+  console.log($httpProvider.interceptors, 'interceptors');
 }]);
 angular.module('ngLoading.directives', [])
 
@@ -205,6 +206,7 @@ angular.module('ngLoading.interceptor', [])
       });
     },
     request: function(config) {
+      console.log(config, 'the request coming through');
       //disable loading screen for a per request basis
       if(config.showLoading === false) return config;
 

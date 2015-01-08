@@ -1,5 +1,5 @@
 angular.module('Demo', [
-  // 'ngLoading',
+  'ngLoading',
   'lumx'
 ])
 // .config(function(loadingProvider, $httpProvider) {
