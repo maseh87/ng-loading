@@ -15,7 +15,7 @@ angular.module('ngLoading.compileFactory', [])
     $timeout(function() {
       div.removeClass('fade-out');
       div.addClass('fade-in');
-    }, 600);
+    }, 200);
   };
 
   var fadeIn = function() {
