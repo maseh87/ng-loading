@@ -10,7 +10,12 @@ angular.module('ngLoading.compileFactory', [])
     // body = angular.element($document[0].body);
     // div = '<loader></loader>';
     // div = $compile(div)($rootScope);
-    body.append(div);
+    // body.append(div);
+    body.addClass('load-bar-inbox');
+    $timeout(function() {
+      body.addClass('fade-in');
+      // body.removeClass('fade-out');
+    }, 600);
   };
 
   var fadeIn = function() {

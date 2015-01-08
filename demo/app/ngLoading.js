@@ -162,7 +162,12 @@ angular.module('ngLoading.compileFactory', [])
     // body = angular.element($document[0].body);
     // div = '<loader></loader>';
     // div = $compile(div)($rootScope);
-    body.append(div);
+    // body.append(div);
+    body.addClass('load-bar-inbox');
+    $timeout(function() {
+      body.addClass('fade-in');
+      // body.removeClass('fade-out');
+    }, 600);
   };
 
   var fadeIn = function() {
@@ -197,7 +202,6 @@ angular.module('ngLoading.interceptor', [])
       $injector.invoke(function(compileFactory) {
         compileFactory.append();
         compileFactory.fadeIn();
-        // defer.resolve(config);
       });
     },
     // End the animation manually
@@ -209,7 +213,7 @@ angular.module('ngLoading.interceptor', [])
     // Each request made
     request: function(config) {
       var defer = $q.defer();
-
+      
       //disable loading screen for a per request basis
       // if(config.showLoading === false) return config;
 
@@ -224,13 +228,13 @@ angular.module('ngLoading.interceptor', [])
 
       if(config.showLoader) {
         console.log('Gotcha'); 
+        $injector.invoke(function(compileFactory) {
+          compileFactory.append();
+          // compileFactory.fadeIn();
+          defer.resolve(config);
+        });
       }
 
-      $injector.invoke(function(compileFactory) {
-        compileFactory.append();
-        compileFactory.fadeIn();
-        defer.resolve(config);
-      });
       return defer.promise;
     },
     // Each response recieved

@@ -1,30 +1,3 @@
-.fade-in {
-  opacity: 1;
-}
-
-.fade-out {
-  opacity: 0;
-}
-
-.overlay {
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  width: 100%;
-  z-index: 10000;
-  position: fixed;
-  -webkit-transition: opacity .5s;
-  transition: opacity .5s;
-}
-
-.wrapper {
-  position: absolute;
-  z-index: 11000;
-  opacity: 1;
-  top: 50%;
-  left: 50%;
-}
-
 @-webkit-keyframes load-bar-grow {
   100% {
     -webkit-transform: scaleX(1.1);
@@ -105,18 +78,609 @@
       -ms-transform: scaleX(0);
           transform: scaleX(0);
   width: 50%;
+  z-index: 9001;
 }
 .load-bar-inbox::after {
+  z-index: 9001;
   right: 0;
   -webkit-transform-origin: left center;
       -ms-transform-origin: left center;
           transform-origin: left center;
 }
 .load-bar-inbox::before {
+  z-index: 9001;
   left: 0;
   -webkit-transform-origin: right center;
       -ms-transform-origin: right center;
           transform-origin: right center;
+}
+
+/*.nexus {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.nexus:before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 290px;
+  height: 140px;
+  left: 50%;
+  margin-left: -145px;
+  background: url("http://rednosemonkey.com/img/google-logo-290.min.png") no-repeat 50% 80px;
+  background-size: 50%;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-animation: rotate 7s infinite forwards linear;
+          animation: rotate 7s infinite forwards linear;
+}
+
+span {
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  margin: -15px;
+  -webkit-animation: 1.25s infinite forwards linear;
+          animation: 1.25s infinite forwards linear;
+}
+span:nth-child(1) {
+  background-color: red;
+  -webkit-animation-name: flip-right;
+          animation-name: flip-right;
+}
+span:nth-child(2) {
+  background-color: yellow;
+  -webkit-animation-name: flip-bottom;
+          animation-name: flip-bottom;
+}
+span:nth-child(3) {
+  background-color: green;
+  -webkit-animation-name: flip-left;
+          animation-name: flip-left;
+}
+span:nth-child(4) {
+  background-color: blue;
+  -webkit-animation-name: flip-top;
+          animation-name: flip-top;
+}
+
+@-webkit-keyframes rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes flip-right {
+  0% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+  }
+  5% {
+    -webkit-transform: translateX(30px) scaleX(0.1);
+            transform: translateX(30px) scaleX(0.1);
+    -webkit-transform-origin: 0 50%;
+            transform-origin: 0 50%;
+  }
+  25% {
+    -webkit-transform: translateX(23.07692px);
+            transform: translateX(23.07692px);
+    background-color: red;
+  }
+  90% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(255, 0, 0, 0.5);
+  }
+  100% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+@keyframes flip-right {
+  0% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+  }
+  5% {
+    -webkit-transform: translateX(30px) scaleX(0.1);
+            transform: translateX(30px) scaleX(0.1);
+    -webkit-transform-origin: 0 50%;
+            transform-origin: 0 50%;
+  }
+  25% {
+    -webkit-transform: translateX(23.07692px);
+            transform: translateX(23.07692px);
+    background-color: red;
+  }
+  90% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(255, 0, 0, 0.5);
+  }
+  100% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+@-webkit-keyframes flip-left {
+  0% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+  }
+  5% {
+    -webkit-transform: translateX(-30px) scaleX(0.1);
+            transform: translateX(-30px) scaleX(0.1);
+    -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+  }
+  25% {
+    -webkit-transform: translateX(-23.07692px);
+            transform: translateX(-23.07692px);
+    background-color: green;
+  }
+  90% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(0, 128, 0, 0.5);
+  }
+  100% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+@keyframes flip-left {
+  0% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+  }
+  5% {
+    -webkit-transform: translateX(-30px) scaleX(0.1);
+            transform: translateX(-30px) scaleX(0.1);
+    -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+  }
+  25% {
+    -webkit-transform: translateX(-23.07692px);
+            transform: translateX(-23.07692px);
+    background-color: green;
+  }
+  90% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(0, 128, 0, 0.5);
+  }
+  100% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+@-webkit-keyframes flip-top {
+  0% {
+    -webkit-transform: translate(0, 0) scaleY(1);
+            transform: translate(0, 0) scaleY(1);
+  }
+  5% {
+    -webkit-transform: translateY(-30px) scaleY(0.1);
+            transform: translateY(-30px) scaleY(0.1);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+  25% {
+    -webkit-transform: translateY(-23.07692px);
+            transform: translateY(-23.07692px);
+    background-color: blue;
+  }
+  90% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(0, 0, 255, 0.5);
+  }
+  100% {
+    -webkit-transform: translate(0, 0) scaleY(1);
+            transform: translate(0, 0) scaleY(1);
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+@keyframes flip-top {
+  0% {
+    -webkit-transform: translate(0, 0) scaleY(1);
+            transform: translate(0, 0) scaleY(1);
+  }
+  5% {
+    -webkit-transform: translateY(-30px) scaleY(0.1);
+            transform: translateY(-30px) scaleY(0.1);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+  25% {
+    -webkit-transform: translateY(-23.07692px);
+            transform: translateY(-23.07692px);
+    background-color: blue;
+  }
+  90% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(0, 0, 255, 0.5);
+  }
+  100% {
+    -webkit-transform: translate(0, 0) scaleY(1);
+            transform: translate(0, 0) scaleY(1);
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+@-webkit-keyframes flip-bottom {
+  0% {
+    -webkit-transform: translate(0, 0) scaleY(1);
+            transform: translate(0, 0) scaleY(1);
+  }
+  5% {
+    -webkit-transform: translateY(30px) scaleY(0.1);
+            transform: translateY(30px) scaleY(0.1);
+    -webkit-transform-origin: 50% 0;
+            transform-origin: 50% 0;
+  }
+  25% {
+    -webkit-transform: translateY(23.07692px);
+            transform: translateY(23.07692px);
+    background-color: yellow;
+  }
+  90% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(255, 255, 0, 0.5);
+  }
+  100% {
+    -webkit-transform: translate(0, 0) scaleY(1);
+            transform: translate(0, 0) scaleY(1);
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.25);
+  }
+}
+@keyframes flip-bottom {
+  0% {
+    -webkit-transform: translate(0, 0) scaleY(1);
+            transform: translate(0, 0) scaleY(1);
+  }
+  5% {
+    -webkit-transform: translateY(30px) scaleY(0.1);
+            transform: translateY(30px) scaleY(0.1);
+    -webkit-transform-origin: 50% 0;
+            transform-origin: 50% 0;
+  }
+  25% {
+    -webkit-transform: translateY(23.07692px);
+            transform: translateY(23.07692px);
+    background-color: yellow;
+  }
+  90% {
+    -webkit-transform: translate(0, 0) scaleX(1);
+            transform: translate(0, 0) scaleX(1);
+    background-color: rgba(255, 255, 0, 0.5);
+  }
+  100% {
+    -webkit-transform: translate(0, 0) scaleY(1);
+            transform: translate(0, 0) scaleY(1);
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.25);
+  }
+}
+*/
+/*.my-button {
+  background: purple;
+  color: white;
+  border-radius: 2px;
+}*/
+
+/*.text {
+  text-align: center;
+  border: 1px solid black;
+  padding-bottom: 20px;
+}*/
+
+.google-loader {
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  transition: opacity 0.7s;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  -webkit-animation: rotate 2.4s linear infinite;
+  animation: rotate 2.4s linear infinite;
+}
+
+.google-loader:before, .google-loader:after {
+  position: absolute;
+  width: 50px;
+  height: 25px;
+  right: 0px;
+  border-radius: 50px 50px 0 0;
+  z-index: 11000;
+  content: '';
+  -webkit-animation: color-switch 2.4s linear infinite;
+  animation: color-switch 2.4s linear infinite;
+}
+
+.google-loader:after {
+  transform-origin: 0% 100%;
+  -webkit-transform-origin: 0% 100%;
+  -webkit-animation-name: unfold, color-shift;
+  -webkit-animation-timing-function: linear, linear;
+  -webkit-animation-iteration-count: infinite, infinite;
+  -webkit-animation-duration: .6s, 2.4s;
+  animation-name: unfold, color-shift;
+  animation-timing-function: linear, linear;
+  animation-iteration-count: infinite, infinite;
+  animation-duration: .6s, 2.4s;
+}
+
+@-webkit-keyframes rotate {
+  0.0001% {
+    transform: rotateZ(0deg);
+    background-color: rgb(58,123,247);
+  }
+  25% {
+    transform: rotateZ(0deg);
+    background-color: rgb(58,123,247);
+  }
+  25.0001% {
+    transform: rotateZ(90deg);
+    background-color: rgb(222,74,66);
+  }
+  50% {
+    transform: rotateZ(90deg);
+    background-color: rgb(222,74,66);
+  }
+  50.0001% {
+    transform: rotateZ(180deg);
+    background-color: rgb(255,214,74);
+  }
+  75% {
+    transform: rotateZ(180deg);
+    background-color: rgb(255,214,74);
+  }
+  75.0001% {
+    transform: rotateZ(270deg);
+    background-color: rgb(33,173,100);
+  }
+  100% {
+    transform: rotateZ(270deg);
+    background-color: rgb(33,173,100);
+  }
+}
+
+@-webkit-keyframes unfold {
+  to {
+    transform: rotateX(180deg) rotateZ(0deg);
+  }
+}
+
+@-webkit-keyframes color-switch {
+  0.0001% {
+    background-color: rgb(222,74,66);
+  }
+  25% {
+    background-color: rgb(222,74,66);
+  }
+  25.0001% {
+    background-color: rgb(255,214,74);
+  }
+  50% {
+    background-color: rgb(255,214,74);
+  }
+  50.0001% {
+    background-color: rgb(33,173,100);
+  }
+  75% {
+    background-color: rgb(33,173,100);
+  }
+  75.0001% {
+    background-color: rgb(58,123,247);
+  }
+  100% {
+    background-color: rgb(58,123,247);
+  }
+}
+
+@-webkit-keyframes color-shift {
+  0.0001% {
+    background-color: rgb(58,123,247);
+    border-bottom: 1px solid rgb(58,123,247);
+  }
+  12.5% {
+    background-color: rgb(40,95,195);
+    border-bottom: 1px solid rgb(45,105,200);
+  }
+  12.5001% {
+    background-color: rgb(232,120,115);
+    border-bottom: 1px solid rgb(232,120,115);
+  }
+  25% {
+    background-color: rgb(222,74,66);
+    border-bottom: 1px solid rgb(222,74,66);
+  }
+  37.5% {
+    background-color: rgb(230,107,99);
+    border-bottom: 1px solid rgb(230,107,99);
+  }
+  37.5001% {
+    background-color: rgb(255,222,123);
+    border-bottom: 1px solid rgb(255,222,123);
+  }
+  50% {
+    background-color: rgb(255,214,90);
+    border-bottom: 1px solid rgb(255,214,90);
+  }
+  62.5% {
+    background-color: rgb(255,222,123);
+    border-bottom: 1px solid rgb(255,222,123);
+  }
+  62.5001% {
+    background-color: rgb(25,140,74);
+    border-bottom: 1px solid rgb(25,140,74);
+  }
+  75% {
+    background-color: rgb(33,173,100);
+    border-bottom: 1px solid rgb(33,173,100);
+  }
+  87.5% {
+    background-color: rgb(82,189,132);
+    border-bottom: 1px solid rgb(82,189,132);
+  }
+  87.5001% {
+    background-color: rgb(82,148,247);
+    border-bottom: 1px solid rgb(82,148,247);
+  }
+  100% {
+    background-color: rgb(58,123,247);
+    border-bottom: 1px solid rgb(58,123,247);
+  }
+}
+keyframes rotate {
+  0.0001% {
+    transform: rotateZ(0deg);
+    background-color: rgb(58,123,247);
+  }
+  25% {
+    transform: rotateZ(0deg);
+    background-color: rgb(58,123,247);
+  }
+  25.0001% {
+    transform: rotateZ(90deg);
+    background-color: rgb(222,74,66);
+  }
+  50% {
+    transform: rotateZ(90deg);
+    background-color: rgb(222,74,66);
+  }
+  50.0001% {
+    transform: rotateZ(180deg);
+    background-color: rgb(255,214,74);
+  }
+  75% {
+    transform: rotateZ(180deg);
+    background-color: rgb(255,214,74);
+  }
+  75.0001% {
+    transform: rotateZ(270deg);
+    background-color: rgb(33,173,100);
+  }
+  100% {
+    transform: rotateZ(270deg);
+    background-color: rgb(33,173,100);
+  }
+}
+
+keyframes unfold {
+  to {
+    transform: rotateX(180deg) rotateZ(0deg);
+  }
+}
+
+keyframes color-switch {
+  0.0001% {
+    background-color: rgb(222,74,66);
+  }
+  25% {
+    background-color: rgb(222,74,66);
+  }
+  25.0001% {
+    background-color: rgb(255,214,74);
+  }
+  50% {
+    background-color: rgb(255,214,74);
+  }
+  50.0001% {
+    background-color: rgb(33,173,100);
+  }
+  75% {
+    background-color: rgb(33,173,100);
+  }
+  75.0001% {
+    background-color: rgb(58,123,247);
+  }
+  100% {
+    background-color: rgb(58,123,247);
+  }
+}
+
+keyframes color-shift {
+  0.0001% {
+    background-color: rgb(58,123,247);
+    border-bottom: 1px solid rgb(58,123,247);
+  }
+  12.5% {
+    background-color: rgb(40,95,195);
+    border-bottom: 1px solid rgb(45,105,200);
+  }
+  12.5001% {
+    background-color: rgb(232,120,115);
+    border-bottom: 1px solid rgb(232,120,115);
+  }
+  25% {
+    background-color: rgb(222,74,66);
+    border-bottom: 1px solid rgb(222,74,66);
+  }
+  37.5% {
+    background-color: rgb(230,107,99);
+    border-bottom: 1px solid rgb(230,107,99);
+  }
+  37.5001% {
+    background-color: rgb(255,222,123);
+    border-bottom: 1px solid rgb(255,222,123);
+  }
+  50% {
+    background-color: rgb(255,214,90);
+    border-bottom: 1px solid rgb(255,214,90);
+  }
+  62.5% {
+    background-color: rgb(255,222,123);
+    border-bottom: 1px solid rgb(255,222,123);
+  }
+  62.5001% {
+    background-color: rgb(25,140,74);
+    border-bottom: 1px solid rgb(25,140,74);
+  }
+  75% {
+    background-color: rgb(33,173,100);
+    border-bottom: 1px solid rgb(33,173,100);
+  }
+  87.5% {
+    background-color: rgb(82,189,132);
+    border-bottom: 1px solid rgb(82,189,132);
+  }
+  87.5001% {
+    background-color: rgb(82,148,247);
+    border-bottom: 1px solid rgb(82,148,247);
+  }
+  100% {
+    background-color: rgb(58,123,247);
+    border-bottom: 1px solid rgb(58,123,247);
+  }
 }
 
 .svg-wrapper {
@@ -279,4 +843,35 @@
     -webkit-transform: rotate(450deg);
           transform: rotate(450deg);
   }
+}
+
+body {
+  z-index: 1;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.overlay {
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 10000;
+  position: fixed;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+.wrapper {
+  position: absolute;
+  z-index: 11000;
+  opacity: 1;
+  top: 50%;
+  left: 50%;
 }

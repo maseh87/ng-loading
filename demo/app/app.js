@@ -19,13 +19,13 @@ angular.module('Demo', [
   };
 
   $scope.test = function() {
-    if($scope.config.overlay.display === 'true') $scope.config.overlay.display = true;
-    config = angular.copy($scope.config);
+    // if($scope.config.overlay.display === 'true') $scope.config.overlay.display = true;
+    // config = angular.copy($scope.config);
     $http({
       method: 'GET',
       url: 'https://www.reddit.com/.json',
       showLoader: true,
-      loadingConfig: config
+      // loadingConfig: config
     }).then(function(result) {
       // console.log(result.data);
     });

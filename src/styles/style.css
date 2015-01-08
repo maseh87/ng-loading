@@ -1,3 +1,7 @@
+body {
+  z-index: 1;
+}
+
 .fade-in {
   opacity: 1;
 }
