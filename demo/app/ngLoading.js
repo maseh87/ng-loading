@@ -36,9 +36,9 @@ angular.module('ngLoading', [
         o = verify(configObj.overlay, 'overlay');
       }
       //verify the configObj properties before the provider is registered
-      c = verify(configObj);
+      // c = verify(configObj);
       //extend new properties onto the config obj
-      _.extend(config, c);
+      _.extend(config, configObj);
       //extend new properties onto the overlay obj
       _.extend(overlay, o);
 
@@ -52,19 +52,19 @@ angular.module('ngLoading', [
       }
       //option is passed in to check the overlay obj
       if(option) {
-        if(obj.display === true) {
-          obj.display = 'overlay';
-          //check overlay color
-          if(obj.color[0] === '#' && obj.opacity) {
-            obj.color = convertColor(obj.color, obj.opacity);
-          } else if(obj.color[0] === '#') {
-            obj.color = convertColor(obj.color, '0.5');
-          }
-          //check overlay opacity
-          if(obj.opacity) {
-            // console.log(obj.color, 'overlay color');
-          }
+        // if(obj.display === true) {
+        obj.display = option;
+        //check overlay color
+        if(obj.color[0] === '#' && obj.opacity) {
+          obj.color = convertColor(obj.color, obj.opacity);
+        } else if(obj.color[0] === '#') {
+          obj.color = convertColor(obj.color, '0.5');
         }
+        //check overlay opacity
+        if(obj.opacity) {
+          // console.log(obj.color, 'overlay color');
+        }
+        // }
         return obj;
       }
       //return config object if option is undefined
@@ -87,6 +87,7 @@ angular.module('ngLoading', [
 
 
     config.overlay = overlay;
+    console.log(config, 'config dawg');
     //set $get function to be called by angular injector
     //required when creating provider constructors
     loadService.$get = function() {
@@ -103,7 +104,7 @@ angular.module('ngLoading', [
 
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
-  
+
 }]);
 angular.module('ngLoading.directives', [])
 
@@ -144,6 +145,7 @@ angular.module('ngLoading.directives', [])
         elem[0].style.background = loading.config.overlay.color;
         elem[0].style.transition = loading.config.transitionSpeed;
       }
+    console.log(loading.config, 'directives loading config!');
     }
   };
   //return the directive object
@@ -157,30 +159,23 @@ angular.module('ngLoading.compileFactory', [])
   var body = angular.element($document[0].body);
   var div = '<loader></loader>';
   div = $compile(div)($rootScope);
+
   // Append the directive to the body and fade-in
   var append = function() {
     body.append(div);
-    div.addClass('load-bar-inbox');
     $timeout(function() {
       div.removeClass('fade-out');
       div.addClass('fade-in');
     }, 200);
   };
 
-  // var fadeIn = function() {
-  //   $timeout(function() {
-  //     div.removeClass('fade-out');
-  //     div.addClass('fade-in');
-  //   }, 200);
-  // };
-  
   // Remove div from the DOM and fade-out
   var remove = function() {
     $timeout(function() {
       div.addClass('fade-out');
     }, 3000).then(function() {
       $timeout(function() {
-        div.removeClass('load-bar-inbox');
+        div.remove();
       },700);
     });
   };
@@ -188,7 +183,6 @@ angular.module('ngLoading.compileFactory', [])
   return {
     append: append,
     remove: remove
-    // fadeIn: fadeIn,
   };
 }]);
 angular.module('ngLoading.interceptor', [])
@@ -199,7 +193,6 @@ angular.module('ngLoading.interceptor', [])
     start: function() {
       $injector.invoke(function(compileFactory) {
         compileFactory.append();
-        compileFactory.fadeIn();
       });
     },
     // End the animation manually
@@ -211,28 +204,12 @@ angular.module('ngLoading.interceptor', [])
     // Each request made
     request: function(config) {
       var defer = $q.defer();
-      
-      //disable loading screen for a per request basis
-      // if(config.showLoading === false) return config;
-
-      // if(config.loadingConfig) {
-      //   loadConfig = _.extend(loading.config, loading.verify(config.loadingConfig));
-      //   if(config.loadingConfig.overlay.display === true){
-      //     overlay = _.extend(loading.config.overlay, loading.verify(config.loadingConfig.overlay, 'overlay'));
-      //   }
-      //   loading.config = loadConfig;
-      //   loading.config.overlay = overlay;
-      // }
-
-      if(config.showLoader) {
-        console.log('Gotcha'); 
+      if(config.showLoader) { 
         $injector.invoke(function(compileFactory) {
           compileFactory.append();
-          // compileFactory.fadeIn();
           defer.resolve(config);
         });
       }
-
       return defer.promise;
     },
     // Each response recieved

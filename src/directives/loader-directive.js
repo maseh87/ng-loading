@@ -37,6 +37,7 @@ angular.module('ngLoading.directives', [])
         elem[0].style.background = loading.config.overlay.color;
         elem[0].style.transition = loading.config.transitionSpeed;
       }
+    console.log(loading.config, 'directives loading config!');
     }
   };
   //return the directive object

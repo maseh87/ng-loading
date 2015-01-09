@@ -36,9 +36,9 @@ angular.module('ngLoading', [
         o = verify(configObj.overlay, 'overlay');
       }
       //verify the configObj properties before the provider is registered
-      c = verify(configObj);
+      // c = verify(configObj);
       //extend new properties onto the config obj
-      _.extend(config, c);
+      _.extend(config, configObj);
       //extend new properties onto the overlay obj
       _.extend(overlay, o);
 
@@ -52,19 +52,19 @@ angular.module('ngLoading', [
       }
       //option is passed in to check the overlay obj
       if(option) {
-        if(obj.display === true) {
-          obj.display = 'overlay';
-          //check overlay color
-          if(obj.color[0] === '#' && obj.opacity) {
-            obj.color = convertColor(obj.color, obj.opacity);
-          } else if(obj.color[0] === '#') {
-            obj.color = convertColor(obj.color, '0.5');
-          }
-          //check overlay opacity
-          if(obj.opacity) {
-            // console.log(obj.color, 'overlay color');
-          }
+        // if(obj.display === true) {
+        obj.display = option;
+        //check overlay color
+        if(obj.color[0] === '#' && obj.opacity) {
+          obj.color = convertColor(obj.color, obj.opacity);
+        } else if(obj.color[0] === '#') {
+          obj.color = convertColor(obj.color, '0.5');
         }
+        //check overlay opacity
+        if(obj.opacity) {
+          // console.log(obj.color, 'overlay color');
+        }
+        // }
         return obj;
       }
       //return config object if option is undefined
@@ -87,6 +87,7 @@ angular.module('ngLoading', [
 
 
     config.overlay = overlay;
+    console.log(config, 'config dawg');
     //set $get function to be called by angular injector
     //required when creating provider constructors
     loadService.$get = function() {
@@ -103,5 +104,5 @@ angular.module('ngLoading', [
 
   //Push the Interceptor factory object to listen for http reqests and responses
   $httpProvider.interceptors.push('Interceptor');
-  
+
 }]);

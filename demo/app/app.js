@@ -3,7 +3,15 @@ angular.module('Demo', [
   'ngMaterial'
 ])
 .config(function(loadingProvider, $httpProvider) {
-  console.log($httpProvider, 'responseInterceptors');
+  // console.log($httpProvider, 'responseInterceptors');
+  loadingProvider
+    .load({
+      transitionSpeed: '.3s',
+      overlay: {
+        color: '#FEFEFE',
+        opacity: '.3'
+      }
+    });
 })
 .controller('LoadingController', function($scope, $http, $timeout, $document, $mdToast, Interceptor) {
   var body = angular.element($document[0].body);
@@ -19,7 +27,6 @@ angular.module('Demo', [
   };
 
   $scope.test = function() {
-    // if($scope.config.overlay.display === 'true') $scope.config.overlay.display = true;
     // config = angular.copy($scope.config);
     $http({
       method: 'GET',

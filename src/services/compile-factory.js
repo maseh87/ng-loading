@@ -9,7 +9,6 @@ angular.module('ngLoading.compileFactory', [])
   // Append the directive to the body and fade-in
   var append = function() {
     body.append(div);
-    div.addClass('load-bar-inbox');
     $timeout(function() {
       div.removeClass('fade-out');
       div.addClass('fade-in');
@@ -22,7 +21,7 @@ angular.module('ngLoading.compileFactory', [])
       div.addClass('fade-out');
     }, 3000).then(function() {
       $timeout(function() {
-        div.removeClass('load-bar-inbox');
+        div.remove();
       },700);
     });
   };
