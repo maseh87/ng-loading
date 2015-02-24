@@ -6,38 +6,63 @@ angular.module('ngLoading.directives', [])
   var checkClass;
 
   var templates = {
-    'load-bar-inbox': '<div class="'+ loading.config.overlay.display +' fade-out">' + '<div class="' + loading.config.class +  '"></div>' + '</div>',
-    'spinner': '<div class="'+ loading.config.overlay.display +' fade-out">' + '<div class="svg-wrapper">' + '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' + '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' + '</svg>' + '<div>' + '</div>'
+    'load-bar-inbox': '<div class="'+ checkClass+' fade-out">' + '<div class="' + checkClass +  '"></div>' + '</div>',
+    'spinner': '<div class="'+ checkClass +' fade-out">' + '<div class="svg-wrapper">' + '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' + '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' + '</svg>' + '<div>' + '</div>'
   };
 
   var directive = {
     restrict: 'EAC',
     scope: {},
     replace: true,
-    // link: link,
     template: function() {
-      if(loading.config.class === '') {
-        loading.config.class = 'load-bar-inbox';
-      }
-      checkClass = loading.config.icon.slice(0, 2);
+      console.log(loading, 'heres the directive running in the template function');
+      // if(loading.config.class === '') {
+      //   loading.config.class = 'spinner';
+      // }
+      // checkClass = loading.config.icon.slice(0, 2);
 
-      if(loading.config.icon) {
-        return '<div class="' + loading.config.overlay.display + ' fade-out">' + '<div class="wrapper">' + '<i class="' + loading.config.icon +  '"></i></div>' + '</div>'
+      // if(loading.config.icon) {
+      //   return '<div class="' + loading.config.overlay.display + ' fade-out">' + '<div class="wrapper">' + '<i class="' + loading.config.icon +  '"></i></div>' + '</div>'
+      // }
+      if(loading.config.localConfig) {
+        console.log(loading.config, 'local-config');
+        if(loading.config.localConfig.class) {
+          checkClass = loading.config.localConfig.class;
+          return templates[loading.config.localConfig.class];
+        }
+      } else {
+        console.log(loading.config, 'global-config');
+        checkClass = loading.config.globalConfig.class;
+        return templates[loading.config.globalConfig.class];
       }
-
-      return templates[loading.config.class];
     },
     compile: function(elem) {
-
-
-      if(loading.config.overlay) {
-        if(loading.config.overlay.display !== 'overlay') {
-          loading.config.overlay.display = loading.config.overlay.display || '';
+      console.log('its compiling');
+      if(loading.config.localConfig) {
+        if(loading.config.localConfig.overlay) {
+          if(loading.config.localConfig.overlay.display !== 'overlay') {
+            loading.config.localConfig.overlay.display = loading.config.localConfig.overlay.display || '';
+          }
+          elem[0].style.background = loading.config.localConfig.overlay.color;
+          elem[0].style.transition = loading.config.localConfig.transitionSpeed;
+        }  
+      } else {
+        if(loading.config.globalConfig.overlay) {
+          if(loading.config.globalConfig.overlay.display !== 'overlay') {
+            loading.config.globalConfig.overlay.display = loading.config.globalConfig.overlay.display || '';
+          }
+          elem[0].style.background = loading.config.globalConfig.overlay.color;
+          elem[0].style.transition = loading.config.globalConfig.transitionSpeed;
         }
-        elem[0].style.background = loading.config.overlay.color;
-        elem[0].style.transition = loading.config.transitionSpeed;
       }
-    console.log(loading.config, 'directives loading config!');
+      return {
+        pre: function() {
+          console.log('the prelink function');
+        },
+        post: function() {
+          console.log('the link function');
+        }
+      }
     }
   };
   //return the directive object

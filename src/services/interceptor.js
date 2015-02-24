@@ -1,6 +1,6 @@
 angular.module('ngLoading.interceptor', [])
-.factory('Interceptor', ['$document', '$injector', '$q', 'loading', '$log', function($document, $injector, $q, loading, $log) {
-  var overlay, loadConfig;
+.factory('Interceptor', ['$document', '$injector', 'loading', function($document, $injector, loading) {
+
   return {
     // Start the animation manually
     start: function() {
@@ -16,14 +16,21 @@ angular.module('ngLoading.interceptor', [])
     },
     // Each request made
     request: function(config) {
-      var defer = $q.defer();
-      if(config.showLoader) { 
+      if(config.showLoader) {
+        if(config.loadingConfig) {
+          $injector.invoke(function(loading) {
+            console.log(loading, 'the loading config');
+            console.log(config.loadingConfig, 'the request config');
+            //need to check if they have overlay in the future
+            loading.localConfig = config.loadingConfig;
+          });
+        }
+        console.log(config, 'config');
         $injector.invoke(function(compileFactory) {
           compileFactory.append();
-          defer.resolve(config);
         });
       }
-      return defer.promise;
+      return config;
     },
     // Each response recieved
     response: function(response) {

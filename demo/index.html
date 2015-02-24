@@ -54,6 +54,9 @@
           <md-button class="md-fab" ng-click="test()">
             <img src='./lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
           </md-button>
+           <md-button class="md-fab" ng-click="test2()">
+            <img src='./lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
+          </md-button>
         </div>
         </form>
         <md-card>
@@ -76,36 +79,6 @@
   });
         </code></pre>
         </md-card>
-        <md-button class="md-raised md-primary topButton">
-          OR
-        </md-button>
-        <md-card>
-          <pre><code class="language-">
-  For each individual http request
-
-  $http.get("/api/data", {
-    loadingConfig: {
-      transitionSpeed: "{{ config.transitionSpeed }}",
-      class: "{{ config.class }}",
-      icon: "{{ config.icon }}",
-      overlay: {
-        display: {{ config.overlay.display }},
-        color: "{{ config.overlay.color }}",
-        opacity: "{{ config.overlay.opacity }}"
-      }
-    }
-  })
-  .then(function(result) {
-    //do something
-  });
-        </code></pre>
-        </md-card>
-    <!-- <md-button class="md-fab" ng-click="start()">
-      <img src='./lib/material-design-icons/action/svg/ic_thumb_up_24px.svg'>
-    </md-button>
-    <md-button class="md-fab" ng-click="end()">
-      <img src='./lib/material-design-icons/action/svg/ic_thumb_down_24px.svg'>
-    </md-button> -->
       </div>
     </div>
   </div>

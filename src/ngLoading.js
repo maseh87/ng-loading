@@ -12,7 +12,7 @@ angular.module('ngLoading', [
 
     //create the default config object to be used in the interceptor service
     var config = {
-      class: 'load-bar-inbox',
+      class: 'spinner',
       template: '',
       transitionSpeed: '.5s',
       icon: ''
@@ -22,9 +22,10 @@ angular.module('ngLoading', [
       display: '',
       color: ''
     };
-
+    var originalConfig;
     //extend the config object with the available object passed in globally
     loadService.load = function(configObj) {
+      originalConfig = configObj;
       //verify that an object was passed in
       if(!_.isPlainObject(configObj)) {
         throw 'an object must be passed in';
@@ -87,12 +88,14 @@ angular.module('ngLoading', [
 
 
     config.overlay = overlay;
-    console.log(config, 'config dawg');
     //set $get function to be called by angular injector
     //required when creating provider constructors
     loadService.$get = function() {
       return {
-        config: config,
+        config: {
+          globalConfig: config,
+          localConfig: null
+        },
         verify: verify
       };
     };

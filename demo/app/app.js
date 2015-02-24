@@ -2,28 +2,24 @@ angular.module('Demo', [
   'ngLoading',
   'ngMaterial'
 ])
-.config(function(loadingProvider, $httpProvider) {
-  // console.log($httpProvider, 'responseInterceptors');
+.config(function(loadingProvider, $httpProvider, $timeoutProvider) {
   loadingProvider
     .load({
       transitionSpeed: '.3s',
+      class: 'load-bar-inbox',
       overlay: {
-        color: '#FEFEFE',
-        opacity: '.3'
+        color: '#000000',
+        opacity: '.3',
+        display: true
       }
     });
 })
 .controller('LoadingController', function($scope, $http, $timeout, $document, $mdToast, Interceptor) {
   var body = angular.element($document[0].body);
   var config = {};
-  // $scope.showLoading = true;
   $scope.config = {
     transitionSpeed: '.3s',
-    overlay: {
-      color: '#FEFEFE',
-      opacity: '.3',
-      display: true
-    }
+    class: 'spinner'
   };
 
   $scope.test = function() {
@@ -41,6 +37,16 @@ angular.module('Demo', [
     //   Interceptor.end();
     // }, 3000);
   };
+  $scope.test2 = function() {
+    $http({
+      method: 'GET',
+      url: 'https://www.reddit.com/.json',
+      showLoader: true,
+      loadingConfig: $scope.config
+    }).then(function(result) {
+      // console.log(result.data);
+    });
+  }
 
 });
 

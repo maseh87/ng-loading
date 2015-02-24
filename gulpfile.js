@@ -30,7 +30,7 @@ gulp.task('js', ['css'], function() {
     .pipe($.notify({message: 'Finished Concating your scripts'}));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['js'], function() {
   $.watch(paths.scripts, ['default']);
   $.watch(paths.css, ['default']);
 });
