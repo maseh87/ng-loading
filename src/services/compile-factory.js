@@ -7,13 +7,12 @@ angular.module('ngLoading.compileFactory', [])
 
   // Append the directive to the body and fade-in
   var append = function() {
-    div = $compile('<loader></loader>')($rootScope);
-    // console.log(div, 'div');
+    div = $compile('<div class="loader"></div>')($rootScope);
     body.append(div);
     $timeout(function() {
       div.removeClass('fade-out');
       div.addClass('fade-in');
-    }, 200);
+    }, 300);
   };
 
   // Remove div from the DOM and fade-out

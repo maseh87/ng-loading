@@ -18,17 +18,24 @@ angular.module('ngLoading.interceptor', [])
     request: function(config) {
       if(config.showLoader) {
         if(config.loadingConfig) {
-          $injector.invoke(function(loading) {
-            console.log(loading, 'the loading config');
-            console.log(config.loadingConfig, 'the request config');
+          $injector.invoke(function(loading, compileFactory) {
             //need to check if they have overlay in the future
             loading.localConfig = config.loadingConfig;
+            if(document.querySelector('loader')) {
+              return config;
+            }
+            compileFactory.append();
           });
         }
-        console.log(config, 'config');
-        $injector.invoke(function(compileFactory) {
-          compileFactory.append();
-        });
+        else {
+          $injector.invoke(function(loading, compileFactory) {
+            loading.localConfig = null;
+            if(document.querySelector('loader')) {
+              return config;
+            }
+            compileFactory.append();
+          });
+        }
       }
       return config;
     },

@@ -28,7 +28,7 @@ angular.module('Demo', [
       method: 'GET',
       url: 'https://www.reddit.com/.json',
       showLoader: true,
-      // loadingConfig: config
+      // loadingConfig: $scope.config
     }).then(function(result) {
       // console.log(result.data);
     });
@@ -49,10 +49,3 @@ angular.module('Demo', [
   }
 
 });
-
-
-
-
-
-
-

@@ -3,41 +3,29 @@ angular.module('ngLoading.directives', [])
 //directive to be attached to the DOM
 .directive('loader', ['loading', '$compile', function(loading, $compile) {
   //check if its a font awesome icon
-  var checkClass;
-
-  var templates = {
-    'load-bar-inbox': '<div class="'+ checkClass+' fade-out">' + '<div class="' + checkClass +  '"></div>' + '</div>',
-    'spinner': '<div class="'+ checkClass +' fade-out">' + '<div class="svg-wrapper">' + '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' + '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' + '</svg>' + '<div>' + '</div>'
-  };
 
   var directive = {
     restrict: 'EAC',
     scope: {},
     replace: true,
     template: function() {
-      console.log(loading, 'heres the directive running in the template function');
-      // if(loading.config.class === '') {
-      //   loading.config.class = 'spinner';
-      // }
-      // checkClass = loading.config.icon.slice(0, 2);
+      var checkClass;
 
-      // if(loading.config.icon) {
-      //   return '<div class="' + loading.config.overlay.display + ' fade-out">' + '<div class="wrapper">' + '<i class="' + loading.config.icon +  '"></i></div>' + '</div>'
-      // }
-      if(loading.config.localConfig) {
-        console.log(loading.config, 'local-config');
-        if(loading.config.localConfig.class) {
-          checkClass = loading.config.localConfig.class;
-          return templates[loading.config.localConfig.class];
+      var templates = {
+        'load-bar-inbox': '<div class="'+ loading.config.globalConfig.overlay.display +'">' + '<div class="' + loading.config.globalConfig.class +  '"></div>' + '</div>',
+        'spinner': '<div class="'+ loading.config.globalConfig.overlay.display +' fade-out">' + '<div class="svg-wrapper">' + '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' + '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' + '</svg>' + '<div>' + '</div>'
+      };
+      if(loading.localConfig) {
+        if(loading.localConfig.class) {
+          checkClass = loading.localConfig.class;
+          return templates[loading.localConfig.class];
         }
       } else {
-        console.log(loading.config, 'global-config');
         checkClass = loading.config.globalConfig.class;
         return templates[loading.config.globalConfig.class];
       }
     },
     compile: function(elem) {
-      console.log('its compiling');
       if(loading.config.localConfig) {
         if(loading.config.localConfig.overlay) {
           if(loading.config.localConfig.overlay.display !== 'overlay') {
@@ -57,10 +45,10 @@ angular.module('ngLoading.directives', [])
       }
       return {
         pre: function() {
-          console.log('the prelink function');
+          // console.log('the prelink function');
         },
         post: function() {
-          console.log('the link function');
+          // console.log('the link function');
         }
       }
     }
