@@ -11,17 +11,28 @@ angular.module('ngLoading', [
     var loadService = {};
 
     //create the default config object to be used in the interceptor service
-    var config = {
-      class: 'spinner',
+    var defaultConfig = {
+      class: 'load-bar-inbox',
       template: '',
-      transitionSpeed: '.5s',
-      icon: ''
+      transitionSpeed: '.1s',
+      icon: '',
+      overlay: {
+        color: '',
+        opacity: ''
+      }
+    };
+
+    var localConfig = {
+      class: 'load-bar-inbox',
+      template: '',
+      transitionSpeed: '.1s',
+      icon: '',
+      overlay: {
+        color: '',
+        opacity: ''
+      }
     };
     //default overlay options
-    var overlay = {
-      display: '',
-      color: ''
-    };
     var originalConfig;
     //extend the config object with the available object passed in globally
     loadService.load = function(configObj) {
@@ -30,46 +41,34 @@ angular.module('ngLoading', [
       if(!_.isPlainObject(configObj)) {
         throw 'an object must be passed in';
       }
-
-      var c, o;
-      //verify the overlay obj before the provider is registered
-      if(configObj.overlay) {
-        o = verify(configObj.overlay, 'overlay');
-      }
-      //verify the configObj properties before the provider is registered
-      // c = verify(configObj);
       //extend new properties onto the config obj
-      _.extend(config, configObj);
-      //extend new properties onto the overlay obj
-      _.extend(overlay, o);
+      _.merge(defaultConfig, verify(configObj));
 
-      return config;
+      return defaultConfig;
     };
 
-    function verify(obj, option) {
+    function verify(obj, type) {
       //verify that an object was passed in
       if(!_.isPlainObject(obj)) {
         throw 'an object must be passed in';
       }
       //option is passed in to check the overlay obj
-      if(option) {
-        // if(obj.display === true) {
-        obj.display = option;
+      if(obj.displayOverlay === true) {
+        obj.displayOverlay = 'overlay';
         //check overlay color
-        if(obj.color[0] === '#' && obj.opacity) {
-          obj.color = convertColor(obj.color, obj.opacity);
-        } else if(obj.color[0] === '#') {
-          obj.color = convertColor(obj.color, '0.5');
+        if(obj.overlay.color[0] === '#' && obj.overlay.opacity) {
+          obj.overlay.color = convertColor(obj.overlay.color, obj.overlay.opacity);
+        } else if(obj.overlay.color[0] === '#') {
+          obj.overlay.color = convertColor(obj.overlay.color, '0.5');
         }
-        //check overlay opacity
-        if(obj.opacity) {
-          // console.log(obj.color, 'overlay color');
-        }
-        // }
-        return obj;
+      } else {
+        obj.displayOverlay = 'no-overlay';
       }
-      //return config object if option is undefined
-      return obj;
+      //return config object if option is undefinedfd
+      if(type) return _.merge(localConfig, obj);
+
+      // return obj;
+      return _.merge(defaultConfig, obj);
     }
 
     //converts the hex color into a rgba color
@@ -87,14 +86,14 @@ angular.module('ngLoading', [
     }
 
 
-    config.overlay = overlay;
+    // config.overlay = overlay;
     //set $get function to be called by angular injector
     //required when creating provider constructors
     loadService.$get = function() {
       return {
         config: {
-          globalConfig: config,
-          localConfig: null
+          globalConfig: defaultConfig,
+          localConfig: localConfig
         },
         verify: verify
       };
@@ -113,23 +112,25 @@ angular.module('ngLoading.directives', [])
 
 //directive to be attached to the DOM
 .directive('loader', ['loading', '$compile', function(loading, $compile) {
-  //check if its a font awesome icon
 
   var directive = {
     restrict: 'EAC',
     scope: {},
     replace: true,
     template: function() {
-      var checkClass;
+      var checkClass,
+          checkOverlay = loading.config.globalConfig.displayOverlay;
 
       var templates = {
-        'load-bar-inbox': '<div class="'+ loading.config.globalConfig.overlay.display +'">' + '<div class="' + loading.config.globalConfig.class +  '"></div>' + '</div>',
-        'spinner': '<div class="'+ loading.config.globalConfig.overlay.display +' fade-out">' + '<div class="svg-wrapper">' + '<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' + '<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>' + '</svg>' + '<div>' + '</div>'
+        'load-bar-inbox': '<div class="'+ checkOverlay +' fade-out"><div class="load-bar-inbox"></div></div>',
+        'material-spinner': '<div class="'+ checkOverlay + ' fade-out"><div class="material-spinner"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div></div>',
+        'kit-kat': '<div class="'+ checkOverlay +' fade-out"><div class="kit-kat"><div class="dot white"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>'
       };
-      if(loading.localConfig) {
-        if(loading.localConfig.class) {
-          checkClass = loading.localConfig.class;
-          return templates[loading.localConfig.class];
+      if(loading.config.localConfig) {
+        checkOverlay = loading.config.localConfig.displayOverlay;
+        if(loading.config.localConfig.class) {
+          checkClass = loading.config.localConfig.class;
+          return templates[loading.config.localConfig.class];
         }
       } else {
         checkClass = loading.config.globalConfig.class;
@@ -138,28 +139,22 @@ angular.module('ngLoading.directives', [])
     },
     compile: function(elem) {
       if(loading.config.localConfig) {
-        if(loading.config.localConfig.overlay) {
-          if(loading.config.localConfig.overlay.display !== 'overlay') {
-            loading.config.localConfig.overlay.display = loading.config.localConfig.overlay.display || '';
-          }
+        if(loading.config.localConfig.displayOverlay === 'overlay') {
           elem[0].style.background = loading.config.localConfig.overlay.color;
           elem[0].style.transition = loading.config.localConfig.transitionSpeed;
-        }  
+        }
       } else {
-        if(loading.config.globalConfig.overlay) {
-          if(loading.config.globalConfig.overlay.display !== 'overlay') {
-            loading.config.globalConfig.overlay.display = loading.config.globalConfig.overlay.display || '';
-          }
+        if(loading.config.globalConfig.displayOverlay === 'overlay') {
           elem[0].style.background = loading.config.globalConfig.overlay.color;
           elem[0].style.transition = loading.config.globalConfig.transitionSpeed;
         }
       }
       return {
         pre: function() {
-          console.log('the prelink function');
+          // console.log('the prelink function');
         },
         post: function() {
-          console.log('the link function');
+          // console.log('the link function');
         }
       }
     }
@@ -182,17 +177,17 @@ angular.module('ngLoading.compileFactory', [])
     $timeout(function() {
       div.removeClass('fade-out');
       div.addClass('fade-in');
-    }, 500);
+    }, 400);
   };
 
   // Remove div from the DOM and fade-out
   var remove = function() {
     $timeout(function() {
       div.addClass('fade-out');
-    }, 3000).then(function() {
+    }, 400).then(function() {
       $timeout(function() {
         div.remove();
-      },700);
+      }, 1000);
     });
   };
 
@@ -206,8 +201,13 @@ angular.module('ngLoading.interceptor', [])
 
   return {
     // Start the animation manually
-    start: function() {
-      $injector.invoke(function(compileFactory) {
+    start: function(config) {
+      $injector.invoke(function(loading, compileFactory) {
+        if(config) {
+          loading.localConfig = loading.verify(config);
+        } else {
+          loading.config.localConfig = null;
+        }
         compileFactory.append();
       });
     },
@@ -219,26 +219,27 @@ angular.module('ngLoading.interceptor', [])
     },
     // Each request made
     request: function(config) {
-      if(config.showLoader) {
-        if(config.loadingConfig) {
-          $injector.invoke(function(loading, compileFactory) {
-            //need to check if they have overlay in the future
-            loading.localConfig = config.loadingConfig;
-            if(document.querySelector('loader')) {
-              return config;
-            }
+      if(config.loadingConfig) {
+        $injector.invoke(function(loading, compileFactory) {
+          //need to check if they have overlay in the future
+          loading.localConfig = loading.verify(config.loadingConfig, 'local');
+          if(document.querySelector('loader')) {
+            return config;
+          } else {
             compileFactory.append();
-          });
-        }
-        else {
-          $injector.invoke(function(loading, compileFactory) {
-            loading.localConfig = null;
-            if(document.querySelector('loader')) {
-              return config;
-            }
+          }
+        });
+        return config;
+      }
+      else {
+        $injector.invoke(function(loading, compileFactory) {
+          loading.localConfig = null;
+          if(document.querySelector('loader')) {
+            return config;
+          } else {
             compileFactory.append();
-          });
-        }
+          }
+        });
       }
       return config;
     },

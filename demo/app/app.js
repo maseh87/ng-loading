@@ -6,46 +6,32 @@ angular.module('Demo', [
   loadingProvider
     .load({
       transitionSpeed: '.3s',
-      class: 'load-bar-inbox',
+      class: 'material-spinner',
+      displayOverlay: true,
       overlay: {
-        color: '#000000',
-        opacity: '.3',
-        display: true
+        color: '#FFFFFF',
+        opacity: '.3'
       }
     });
 })
 .controller('LoadingController', function($scope, $http, $timeout, $document, $mdToast, Interceptor) {
-  var body = angular.element($document[0].body);
   var config = {};
   $scope.config = {
     transitionSpeed: '.3s',
-    class: 'spinner'
+    class: 'kit-kat'
   };
 
   $scope.test = function() {
-    // config = angular.copy($scope.config);
-    $http({
-      method: 'GET',
-      url: 'https://www.reddit.com/.json',
-      showLoader: true,
-      // loadingConfig: $scope.config
-    }).then(function(result) {
-      // console.log(result.data);
-    });
-    // Interceptor.start();
-    // $timeout(function(){
-    //   Interceptor.end();
-    // }, 3000);
+    Interceptor.start();
+    $timeout(function() {
+      Interceptor.end();
+    }, 3000);
   };
   $scope.test2 = function() {
     $http({
       method: 'GET',
       url: 'https://www.reddit.com/.json',
-      showLoader: true,
       loadingConfig: $scope.config
-    }).then(function(result) {
-      // console.log(result.data);
     });
   }
-
 });

@@ -1,10 +1,13 @@
-var gulp = require('gulp'),
-    $    = require('gulp-load-plugins')();
+var gulp   = require('gulp'),
+    $      = require('gulp-load-plugins')(),
+    bs     = require('browser-sync'),
+    reload = bs.reload;
 
 
 var paths = {
   scripts: ['src/ngLoading.js', 'src/directives/loader-directive.js', 'src/services/*.js', 'src/directives/*.js'],
-  css: ['src/styles/*.css']
+  css: ['src/styles/*.css'],
+  dev: ['demo/app/*.js', 'demo/index.html', 'demo/styles/*.css']
 };
 
 gulp.task('jshint', function() {
@@ -12,6 +15,19 @@ gulp.task('jshint', function() {
     .pipe($.jshint())
     .pipe($.jshint({reporter: 'jshint-stylish'}))
     .pipe($.notify({message: 'Finished Linting'}));
+});
+
+gulp.task('dev', function(done) {
+  bs({
+    port: 9500,
+    server: {
+      baseDir: ['./demo', './dist']
+    }
+  }, done);
+
+  gulp.watch(paths.scripts, ['js', reload]);
+  gulp.watch(paths.css, ['css', reload]);
+  gulp.watch(paths.dev, reload);
 });
 
 gulp.task('css', function() {
@@ -22,7 +38,7 @@ gulp.task('css', function() {
     .pipe($.notify({message: 'Finished Concating your CSS'}));
 });
 
-gulp.task('js', ['css'], function() {
+gulp.task('js',['jshint'], function() {
   return gulp.src(paths.scripts)
     .pipe($.concat('ngLoading.js'))
     .pipe(gulp.dest('dist/'))
@@ -31,8 +47,8 @@ gulp.task('js', ['css'], function() {
 });
 
 gulp.task('watch', ['js'], function() {
-  $.watch(paths.scripts, ['default']);
-  $.watch(paths.css, ['default']);
+  gulp.watch(paths.scripts, ['js']);
+  gulp.watch(paths.css, ['css']);
 });
 
 
@@ -41,4 +57,4 @@ gulp.task('test', $.shell.task([
   'karma start karma.conf.js --browsers Firefox --single-run'
 ]));
 
-gulp.task('default', ['jshint', 'js', 'watch']);
+gulp.task('default', ['dev']);

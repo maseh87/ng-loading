@@ -3,8 +3,13 @@ angular.module('ngLoading.interceptor', [])
 
   return {
     // Start the animation manually
-    start: function() {
-      $injector.invoke(function(compileFactory) {
+    start: function(config) {
+      $injector.invoke(function(loading, compileFactory) {
+        if(config) {
+          loading.localConfig = loading.verify(config);
+        } else {
+          loading.config.localConfig = null;
+        }
         compileFactory.append();
       });
     },
@@ -16,26 +21,27 @@ angular.module('ngLoading.interceptor', [])
     },
     // Each request made
     request: function(config) {
-      if(config.showLoader) {
-        if(config.loadingConfig) {
-          $injector.invoke(function(loading, compileFactory) {
-            //need to check if they have overlay in the future
-            loading.localConfig = config.loadingConfig;
-            if(document.querySelector('loader')) {
-              return config;
-            }
+      if(config.loadingConfig) {
+        $injector.invoke(function(loading, compileFactory) {
+          //need to check if they have overlay in the future
+          loading.localConfig = loading.verify(config.loadingConfig, 'local');
+          if(document.querySelector('loader')) {
+            return config;
+          } else {
             compileFactory.append();
-          });
-        }
-        else {
-          $injector.invoke(function(loading, compileFactory) {
-            loading.localConfig = null;
-            if(document.querySelector('loader')) {
-              return config;
-            }
+          }
+        });
+        return config;
+      }
+      else {
+        $injector.invoke(function(loading, compileFactory) {
+          loading.localConfig = null;
+          if(document.querySelector('loader')) {
+            return config;
+          } else {
             compileFactory.append();
-          });
-        }
+          }
+        });
       }
       return config;
     },

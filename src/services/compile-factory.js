@@ -12,17 +12,17 @@ angular.module('ngLoading.compileFactory', [])
     $timeout(function() {
       div.removeClass('fade-out');
       div.addClass('fade-in');
-    }, 300);
+    }, 400);
   };
 
   // Remove div from the DOM and fade-out
   var remove = function() {
     $timeout(function() {
       div.addClass('fade-out');
-    }, 3000).then(function() {
+    }, 400).then(function() {
       $timeout(function() {
         div.remove();
-      },700);
+      }, 1000);
     });
   };
 
