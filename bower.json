@@ -1,11 +1,15 @@
 {
   "name": "ngLoading",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "homepage": "https://ngloading.firebaseapp.com/",
   "authors": [
     "Mason <maseh87@gmail.com>"
   ],
   "license": "MIT",
+  "main": [
+    "dist/ngLoading.js",
+    "dist/ngLoading.css"
+  ],
   "ignore": [
     "**/.*",
     "node_modules",
