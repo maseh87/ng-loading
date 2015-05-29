@@ -6,6 +6,10 @@
     "Mason <maseh87@gmail.com>"
   ],
   "license": "MIT",
+  "main": [
+    "dist/ngLoading.js",
+    "dist/ngLoading.css"
+  ],
   "ignore": [
     "**/.*",
     "node_modules",
