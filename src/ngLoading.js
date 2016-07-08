@@ -15,7 +15,8 @@ angular.module('ngLoading', [
       class: 'load-bar-inbox',
       template: '',
       transitionSpeed: '.5s',
-      icon: ''
+      icon: '',
+      delay: 3000
     };
     //default overlay options
     var overlay = {

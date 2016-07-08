@@ -20,10 +20,10 @@ angular.module('ngLoading.compileFactory', [])
     }, 200);
   };
 
-  var remove = function() {
+  var remove = function(delay) {
     $timeout(function() {
       div.addClass('fade-out');
-    }, 3000).then(function() {
+    }, delay).then(function() {
       $timeout(function() {
         div.remove();
       },700);
